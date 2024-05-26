@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Red Carrot Vegetables",
+      "price": 4.99,
+      "originalPrice": 5.99,
+      "category": "Vegetables",
+      "image": "red_carrot_vegetables.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cauliflower 1 pc",
+      "price": 3.00,
+      "originalPrice": 4.00,
+      "category": "Vegetables",
+      "image": "cauliflower_1pc.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Cilantro (2 Pc)",
+      "price": 0.98,
+      "originalPrice": null,
+      "category": "Vegetables",
+      "image": "cilantro_2pc.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Fresh Green Capsicum (500gm)",
+      "price": 3.29,
+      "originalPrice": 3.99,
+      "category": "Vegetables",
+      "image": "fresh_green_capsicum_500gm.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Fresh Mango From Mexico (1Kg)",
+      "price": 8.99,
+      "originalPrice": null,
+      "category": "Fruits",
+      "image": "fresh_mango_mexico_1kg.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Fresh Orange 6 pcs",
+      "price": 5.00,
+      "originalPrice": null,
+      "category": "Fruits",
+      "image": "fresh_orange_6pcs.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Mango Maza Juice",
+      "price": 6.99,
+      "originalPrice": null,
+      "category": "Milk-Juice",
+      "image": "mango_maza_juice.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Pineapple Queen 1 pc",
+      "price": 2.98,
+      "originalPrice": null,
+      "category": "Fruits",
+      "image": "pineapple_queen_1pc.jpg"
+    }
+  ]
+}

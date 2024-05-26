@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Light Mode Variables */
+
+:root {
+  --text-color: rgb(17 24 39);
+  /* Darker shade for text in light mode */
+  --nav-color: #ffffff;
+  /* White navigation bar in light mode */
+  --buttons-color: #00ADB5;
+  /* Teal color for buttons */
+  --buttons-color-hovered: #02888f;
+  /* Darker teal for hovered buttons */
+  --background-color: #ffffff;
+  /* White background for light mode */
+  --background-color-Menu: rgb(17 24 39);
+  /* Darker background for menu in light mode */
+  --background-color-Products: rgba(164, 192, 192, 0.65);
+  /* Semi-transparent light background for products */
+
+}
+
+/* Dark Mode Variables */
+
+.dark {
+  --text-color: #ffffff;
+  /* White text in dark mode */
+  --nav-color: rgb(17 24 39);
+  /* Dark navigation bar in dark mode */
+  --buttons-color: #cab91c;
+  /* Yellow color for buttons in dark mode */
+  --buttons-color-hovered: #998c14;
+  /* Darker yellow for hovered buttons */
+  --background-color: rgb(17 24 39);
+  /* Dark background for dark mode */
+  --background-color-Menu: rgb(17 24 39);
+  /* Same dark background for menu in dark mode */
+  --background-color-Products: rgb(9, 13, 24);
+  /* Very dark background for products in dark mode */
+
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
