@@ -5,7 +5,7 @@ export const CatagoryData = [
   { id: 4, name: "Bakery", icon: "🥖", link: "Bakery" },
   { id: 5, name: "Personal-Care", icon: "🧴", link: "Personal-Care" },
   { id: 6, name: "Grains", icon: "🌾", link: "Grains" },
-  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "Chicken & Egg" },
+  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "Chicken" },
 ];
 
 export const PopProducts = [

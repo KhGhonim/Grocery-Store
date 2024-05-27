@@ -21,7 +21,7 @@ export default function HearoSeaction() {
             clickable: true,
           }}
           navigation={true}
-          modules={[Pagination, Navigation]}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper rounded-2xl"
         >
           {/* Desktop Images */}

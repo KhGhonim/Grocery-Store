@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CatagoryData } from "../../db/db";
 
 export default function Catagory() {
@@ -9,7 +8,7 @@ export default function Catagory() {
         {CatagoryData.map((item) => {
           return (
             <a
-              href={item.link}
+              href={`ProductCatagory/${item.link}`}
               key={item.id}
               className=" bg-gray-200 flex flex-col justify-center items-center gap-3 mt-3 p-4 w-36 rounded-xl shadow-md hover:bg-green-600 hover:text-gray-100 transition-transform duration-300"
             >

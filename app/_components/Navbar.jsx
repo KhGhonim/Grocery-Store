@@ -75,12 +75,12 @@ export default function navbar() {
           <div className="flex flex-1 items-center justify-end md:justify-between">
             {/* Dropdown Catagory */}
             <nav aria-label="Global" className="hidden md:block">
-              <div className="relative flex justify-around items-center gap-7 group">
-                <div
-                  ref={MyCatagoryRef}
-                  onClick={handleArrow}
-                  className="inline-flex items-center overflow-hidden rounded-full border bg-white"
-                >
+              <div
+                ref={MyCatagoryRef}
+                onClick={handleArrow}
+                className="relative flex justify-around items-center gap-7 group"
+              >
+                <div className="inline-flex items-center overflow-hidden rounded-full border bg-white">
                   <div className="flex justify-between items-center gap-4 border-e px-4 py-2  hover:bg-gray-50 hover:text-gray-700">
                     <Image
                       src={"/images/menu.png"}
@@ -110,7 +110,10 @@ export default function navbar() {
                     <div className="p-2 rounded-xl md:block ">
                       {CatagoryData.map((item) => {
                         return (
-                          <a key={item.name} href={item.link}>
+                          <a
+                            key={item.name}
+                            href={`ProductCatagory/${item.link}`}
+                          >
                             <div
                               key={item.name}
                               className=" text-gray-500  hover:text-white  hover:!bg-green-600 rounded-full p-2 "

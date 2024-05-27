@@ -3,147 +3,174 @@
     {
       "id": 1,
       "name": "Red Carrot Vegetables",
-      "link": "carrot.png",
+      "image": "/products/carrot.png",
       "price": 9.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 2,
       "name": "Cauliflower 1 pc",
-      "link": "Cauliflower.png",
+      "image": "/products/Cauliflower.png",
       "price": 9.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 3,
       "name": "Cilantro (2 Pc)",
-      "link": "Cilantro.png",
+      "image": "/products/Cilantro.png",
       "price": 26.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 4,
       "name": "Fresh Green Capsicum (500gm)",
-      "link": "Fresh Green Capsicum.png",
+      "image": "/products/Fresh Green Capsicum.png",
       "price": 26.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 5,
       "name": "Fresh Mango From Mexico (1Kg)",
-      "link": "Fresh Mango From Mexico.png",
+      "image": "/products/Fresh Mango From Mexico.png",
       "price": 31.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Fruits"
     },
     {
       "id": 6,
       "name": "Fresh Orange 6 pcs",
-      "link": "Fresh Orange.png",
+      "image": "/products/Fresh Orange.png",
       "price": 97.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Fruits"
     },
     {
       "id": 7,
       "name": "Mango Maza Juice",
-      "link": "Mango Maza Juice.png",
+      "image": "/products/Mango Maza Juice.png",
       "price": 31.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Drinks"
     },
     {
       "id": 8,
       "name": "Pineapple Queen 1 pc",
-      "link": "Pineapple Queen.png",
+      "image": "/products/Pineapple Queen.png",
       "price": 31.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Fruits"
     },
     {
       "id": 9,
       "name": "Bread",
-      "link": "bread1.png",
+      "image": "/products/bread1.png",
       "price": 62.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Bakery"
     },
     {
       "id": 10,
       "name": "Bread",
-      "link": "bread2.png",
+      "image": "/products/bread2.png",
       "price": 62.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Bakery"
     },
     {
       "id": 11,
       "name": "Egg",
-      "link": "egg1.png",
+      "image": "/products/egg1.png",
       "price": 62.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+
+      "Catagory": "Chicken"
     },
     {
       "id": 12,
       "name": "Egg",
-      "link": "egg2.png"
+      "image": "/products/egg2.png",
+
+      "Catagory": "Chicken"
     },
     {
       "id": 13,
       "name": "Tomato",
-      "link": "domates.png",
+      "image": "/products/domates.png",
       "price": 3.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 14,
       "name": "Lettuce",
-      "link": "letuce.png",
+      "image": "/products/letuce.png",
       "price": 87.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Vegetables"
     },
     {
       "id": 15,
       "name": "Kola",
-      "link": "kola1.png",
+      "image": "/products/kola1.png",
       "price": 87.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Drinks"
     },
     {
       "id": 16,
       "name": "Kola",
-      "link": "kola2.png",
+      "image": "/products/kola2.png",
       "price": 52.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Drinks"
     },
     {
       "id": 17,
       "name": "Kola",
-      "link": "kola3.png",
+      "image": "/products/kola3.png",
       "price": 52.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+      "Catagory": "Drinks"
     },
     {
       "id": 18,
       "name": "Cheese",
-      "link": "chease.png",
+      "image": "/products/chease.png",
       "price": 21.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+
+      "Catagory": "Chicken"
     },
     {
       "id": 19,
       "name": "Ayran",
-      "link": "ayran.png",
+      "image": "/products/ayran.png",
       "price": 21.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+
+      "Catagory": "Milk-Juice"
     },
     {
       "id": 20,
-      "name": "Fish",
-      "link": "kalabalik.png",
+      "name": "Cucumber",
+      "image": "/products/kalabalık.png",
       "price": 333.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+
+      "Catagory": "Vegetables"
     },
     {
       "id": 21,
       "name": "Milk",
-      "link": "sut.png",
+      "image": "/products/sut.png",
       "price": 333.99,
-      "Fakeprice": 4.99
+      "Fakeprice": 4.99,
+
+      "Catagory": "Milk-Juice"
     }
   ]
 }
