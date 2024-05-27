@@ -9,10 +9,10 @@ import Footer from "./_components/Footer";
 export default function Home() {
   return <>
     <Navbar/>
-    {/* <HearoSeaction/>
+    <HearoSeaction/>
     <Catagory/>
     <Products/>
     <Banner/>
-    <Footer/> */}
+    <Footer/>
   </>;
 }

@@ -1,33 +1,59 @@
+"use client";
+
+import { useForm, ValidationError } from "@formspree/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Footer() {
+  const [state, handleSubmit] = useForm("mleqkzkv");
+  const notify = () => toast("Wow so easy!");
+
   return (
     <>
       <footer className="bg-white">
         <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-md">
+          <div className="mx-auto max-w-md text-center">
             <strong className="block text-center text-xl font-bold text-gray-900 sm:text-3xl">
               Want us to email you with the latest blockbuster grocery?
             </strong>
 
-            <form className="mt-6">
-              <div className="relative max-w-lg">
-                <label className="sr-only" htmlFor="email">
-                  {" "}
-                  Email{" "}
-                </label>
+            {state.succeeded === true ? (
+              <span className=" text-xl font-semibold my-3 px-4 text-center">
+                Thanks for signing up
+              </span>
+            ) : (
+              <form onSubmit={handleSubmit} className="mt-6">
+                <div className="relative max-w-lg">
+                  <label className="sr-only" htmlFor="email">
+                    {" "}
+                    Email{" "}
+                  </label>
 
-                <input
-                  className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
-                  id="email"
-                  type="email"
-                  placeholder="john@doe.com"
-                />
+                  <input
+                    className="w-full rounded-full border-gray-200 bg-gray-100 p-4 pe-32 text-sm font-medium"
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="john@doe.com"
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                  />
 
-                <button className="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700">
-                  Subscribe
-                </button>
-              </div>
-            </form>
+                  <button
+                    onClick={notify}
+                    disabled={state.submitting}
+                    type="submit"
+                    className="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+                  >
+                    Subscribe
+                  </button>
+                  <ToastContainer />
+                </div>
+              </form>
+            )}
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
@@ -280,23 +306,10 @@ export default function Footer() {
 
           <div className="mt-16 border-t border-gray-100 pt-8">
             <p className="text-center text-xs/relaxed text-gray-500">
-              © Company 2022. All rights reserved.
+              © Company 2024. All rights reserved.
               <br />
-              Created with
-              <a
-                href="#"
-                className="text-gray-700 underline transition hover:text-gray-700/75"
-              >
-                Laravel
-              </a>
-              and
-              <a
-                href="#"
-                className="text-gray-700 underline transition hover:text-gray-700/75"
-              >
-                Laravel Livewire
-              </a>
-              .
+              Created by{" "}
+              <span className=" font-extrabold  text-base">Khaled Ghonim</span>
             </p>
           </div>
         </div>

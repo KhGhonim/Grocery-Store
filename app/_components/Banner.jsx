@@ -7,7 +7,8 @@ export default function Banner() {
       <Image
         src={"/images/banner.png"}
         alt={"Banner Image"}
-        fill
+        width={1500}
+        height={1500}
         quality={100}
         priority={true}
       />

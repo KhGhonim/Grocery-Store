@@ -1,28 +1,14 @@
 "use client";
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
+import { CatagoryData } from "../../db/db";
 
-// Fetching Data for Catagory Dropdown menu
-async function CatagoryDB() {
-  const res = await fetch("http://localhost:4000/categories", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    notFound();
-  }
-  console.log(res);
-
-  return res.json();
-}
 export default function navbar() {
   const [isArrowClicked, setIsArrowClicked] = useState(false);
   const [IsCatagoryClicked, setIsCatagoryClicked] = useState(false);
-  const [CatagoryData, setCatagoryData] = useState([]);
   const [Menu, setMenu] = useState(false);
   const MyCatagoryRef = useRef(null);
   const MyMenuRef = useRef(null);
@@ -35,10 +21,6 @@ export default function navbar() {
   const HandleMenu = () => {
     setMenu((prev) => !prev);
   };
-
-  useEffect(() => {
-    CatagoryDB().then((data) => setCatagoryData(data));
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (eo) => {
@@ -131,7 +113,7 @@ export default function navbar() {
                           <a key={item.name} href={item.link}>
                             <div
                               key={item.name}
-                              className=" text-gray-500  hover:text-gray-700  hover:!bg-gray-300 rounded-full p-2 "
+                              className=" text-gray-500  hover:text-white  hover:!bg-green-600 rounded-full p-2 "
                             >
                               <a className="flex justify-evenly items-center gap-5 w-max cursor-pointer  ">
                                 <span> {item.icon} </span>
@@ -167,7 +149,7 @@ export default function navbar() {
             <div className="flex items-center gap-4 max-sm:gap-2 cursor-pointer ">
               <a
                 href="/Cart"
-                className="flex items-center gap-1 rounded-md bg-teal-400 transition-all duration-100 hover:bg-teal-600 px-3 py-2 "
+                className="flex justify-center items-center gap-1 rounded-md bg-green-400 transition-all duration-100 hover:bg-green-600 px-3 py-2 "
               >
                 <Image
                   src={"/images/shopping-basket.png"}
@@ -183,14 +165,14 @@ export default function navbar() {
               {/* Begin of the Authentication */}
               <div className="sm:flex sm:gap-4">
                 <a
-                  className="hidden rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 sm:block"
+                  className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
                   href="/signin"
                 >
                   Login
                 </a>
 
                 <a
-                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
                   href="/signup"
                 >
                   Register
@@ -213,9 +195,9 @@ export default function navbar() {
 
         <div
           ref={MyMenuRef}
-          className={`fixed right-0  h-screen w-96 transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0  h-screen w-72 transform transition-transform duration-300 ease-in-out ${
             Menu ? "translate-x-0" : "translate-x-full"
-          } flex flex-col justify-between border bg-green-600`}
+          } flex flex-col justify-between border bg-green-600 z-50 rounded-2xl`}
         >
           <div className="px-4 py-2">
             <ul className="mt-6 space-y-1">
