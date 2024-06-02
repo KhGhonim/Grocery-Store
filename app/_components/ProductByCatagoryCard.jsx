@@ -13,7 +13,7 @@ export default function ProductByCatagoryCard({ params }) {
 
       if (!res.ok) {
         notFound();
-      }
+      } 
 
       const data = await res.json();
 
