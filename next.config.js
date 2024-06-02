@@ -1,18 +1,18 @@
-// @ts-check
+
 
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
+const nextConfig = {};
+
+module.exports = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
+        protocol: "http",
         hostname: "res.cloudinary.com",
         port: "",
       },
     ],
   },
 };
-
-export default nextConfig;

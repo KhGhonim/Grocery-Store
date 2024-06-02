@@ -30,14 +30,14 @@ export default function SharedCard() {
             key={item.name}
             className="flex flex-col items-center justify-between p-2 max-sm:w-[270px] md:w-[350px]  border border-s my-5 transition-transform duration-300 shadow-md hover:shadow-lg rounded-lg"
           >
-            {/* <Image
+            <Image
               src={item.image}
               alt={item.name}
               quality={100}
               width={100}
               height={100}
               className=" w-32 hover:scale-110 transition-transform duration-200"
-            /> */}
+            />
             <h1 className=" font-extrabold my-2">{item.name}</h1>
             <div className="flex justify-evenly items-center gap-4 flex-row text-center  w-full">
               <h1 className=" font-extrabold">{item.price}</h1>
