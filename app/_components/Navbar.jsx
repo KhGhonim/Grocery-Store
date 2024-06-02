@@ -191,12 +191,15 @@ export default function navbar() {
                 </div>
               ) : (
                 <div className="sm:flex sm:gap-4">
-                  <a
-                    className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
-                    href="/AddProduct"
-                  >
-                    Add Product
-                  </a>
+                  {status === "authenticated" &&
+                    session.user.email === "admin@admin.com" && (
+                      <a
+                        className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
+                        href="/AddProduct"
+                      >
+                        Add Product
+                      </a>
+                    )}
 
                   <button
                     className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
