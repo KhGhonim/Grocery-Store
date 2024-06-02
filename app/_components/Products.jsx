@@ -7,7 +7,7 @@ export default function Products() {
       <h1 className=" text-2xl ">Our Poplar Products</h1>
       <Suspense fallback={<Loading />}>
       <SharedCard />
-      </Suspense>
+      </Suspense> 
     </div>
   );
 }
