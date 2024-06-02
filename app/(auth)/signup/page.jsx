@@ -1,6 +1,58 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function page() {
+  const [fristname, setfristname] = useState(null);
+  const [lastname, setlastname] = useState(null);
+  const [email, setemail] = useState(null);
+  const [password, setpassword] = useState(null);
+  const [loading, setloading] = useState(false);
+  const router = useRouter();
+  const Handlesubmit = async (eo) => {
+    eo.preventDefault();
+    setloading(true);
+
+    const IsUserExists = await fetch("api/userExist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const DataFromMongoDB = await IsUserExists.json();
+    console.log(DataFromMongoDB);
+
+    if (DataFromMongoDB.user) {
+      toast.warning("User already exists");
+      setloading(false);
+      eo.target.reset();
+      return;
+    }
+
+    const response = await fetch("api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fristname, lastname, email, password }), // body data type must match "Content-Type" header
+    });
+
+    if (response.ok) {
+      toast.success("Account created");
+      setloading(false);
+      router.replace("/signin");
+    } else {
+      toast.warning("Account is not created, try again later");
+      setloading(false);
+    }
+
+    setloading(false);
+  };
   return (
     <>
       <section className="bg-white">
@@ -73,10 +125,14 @@ export default function page() {
 
                   <input
                     type="text"
+                    required
                     id="FirstName"
                     name="first_name"
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:outline-none "
                     placeholder="John"
+                    onChange={(eo) => {
+                      setfristname(eo.target.value);
+                    }}
                   />
                 </div>
 
@@ -90,14 +146,18 @@ export default function page() {
 
                   <input
                     type="text"
+                    required
                     id="LastName"
                     name="last_name"
                     placeholder="Doe"
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:outline-none"
+                    onChange={(eo) => {
+                      setlastname(eo.target.value);
+                    }}
                   />
                 </div>
 
-                <div className="col-span-6">
+                <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="Email"
                     className="block text-sm font-medium text-gray-700"
@@ -108,10 +168,14 @@ export default function page() {
 
                   <input
                     type="email"
+                    required
                     id="Email"
                     name="email"
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:outline-none"
                     placeholder="123@example.com"
+                    onChange={(eo) => {
+                      setemail(eo.target.value);
+                    }}
                   />
                 </div>
 
@@ -130,23 +194,9 @@ export default function page() {
                     name="password"
                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:outline-none"
                     placeholder="-------"
-                  />
-                </div>
-
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="PasswordConfirmation"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Password Confirmation
-                  </label>
-
-                  <input
-                    type="password"
-                    id="PasswordConfirmation"
-                    name="password_confirmation"
-                    className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm focus:outline-none"
-                    placeholder="-------"
+                    onChange={(eo) => {
+                      setpassword(eo.target.value);
+                    }}
                   />
                 </div>
 
@@ -166,8 +216,28 @@ export default function page() {
                 </div>
 
                 <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                  <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
-                    Create an account
+                  <button
+                    onClick={Handlesubmit}
+                    className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
+                  >
+                    {loading ? (
+                      <div className="lds-default">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    ) : (
+                      "Create an account"
+                    )}
                   </button>
 
                   <p className="mt-4 text-sm text-gray-500 sm:mt-0">
@@ -182,6 +252,7 @@ export default function page() {
             </div>
           </main>
         </div>
+        <ToastContainer />
       </section>
     </>
   );

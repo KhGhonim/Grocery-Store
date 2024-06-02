@@ -1,4 +1,4 @@
-import { CatagoryData } from "../../db/db";
+import { CatagoryData } from "../db/db";
 
 export default function Catagory() {
   return (

@@ -52,3 +52,4 @@ export const PopProducts = [
     price: 4.99,
   },
 ];
+

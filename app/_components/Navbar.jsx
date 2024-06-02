@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
-import { CatagoryData } from "../../db/db";
+import { CatagoryData } from "../db/db";
+import { signOut, useSession } from "next-auth/react";
 
 export default function navbar() {
+  const { data: session, status } = useSession();
   const [isArrowClicked, setIsArrowClicked] = useState(false);
   const [IsCatagoryClicked, setIsCatagoryClicked] = useState(false);
   const [Menu, setMenu] = useState(false);
@@ -78,7 +80,7 @@ export default function navbar() {
               <div
                 ref={MyCatagoryRef}
                 onClick={handleArrow}
-                className="relative flex justify-around items-center gap-7 group"
+                className="relative flex justify-around items-center gap-7 group cursor-pointer"
               >
                 <div className="inline-flex items-center overflow-hidden rounded-full border bg-white">
                   <div className="flex justify-between items-center gap-4 border-e px-4 py-2  hover:bg-gray-50 hover:text-gray-700">
@@ -107,23 +109,21 @@ export default function navbar() {
                     className="absolute start-0 z-10 top-12  rounded-md border border-gray-100 bg-white shadow-lg"
                     role="menu"
                   >
-                    <div className="p-2 rounded-xl md:block ">
+                    <div className="p-2 rounded-xl md:block cursor-pointer">
                       {CatagoryData.map((item) => {
                         return (
-                          <a
+                          <div
                             key={item.name}
-                            href={`ProductCatagory/${item.link}`}
+                            className="text-gray-500 hover:text-white hover:!bg-green-600 rounded-full p-2"
                           >
-                            <div
-                              key={item.name}
-                              className=" text-gray-500  hover:text-white  hover:!bg-green-600 rounded-full p-2 "
+                            <a
+                              href={`/ProductCatagory/${item.link}`}
+                              className="flex justify-evenly items-center gap-5 w-max cursor-pointer"
                             >
-                              <a className="flex justify-evenly items-center gap-5 w-max cursor-pointer  ">
-                                <span> {item.icon} </span>
-                                <span> {item.name} </span>
-                              </a>
-                            </div>
-                          </a>
+                              <span>{item.icon}</span>
+                              <span>{item.name}</span>
+                            </a>
+                          </div>
                         );
                       })}
                     </div>
@@ -157,8 +157,8 @@ export default function navbar() {
                 <Image
                   src={"/images/shopping-basket.png"}
                   alt={"shopping-basket"}
-                  width={25}
-                  height={25}
+                  width={20}
+                  height={20}
                   priority={true}
                   quality={100}
                 />
@@ -166,21 +166,46 @@ export default function navbar() {
               </a>
 
               {/* Begin of the Authentication */}
-              <div className="sm:flex sm:gap-4">
-                <a
-                  className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
-                  href="/signin"
-                >
-                  Login
-                </a>
+              {status === "loading" ? (
+                <div className="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              ) : status === "unauthenticated" ? (
+                <div className="sm:flex sm:gap-4">
+                  <a
+                    className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
+                    href="/signin"
+                  >
+                    Login
+                  </a>
 
-                <a
-                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
-                  href="/signup"
-                >
-                  Register
-                </a>
-              </div>
+                  <a
+                    className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
+                    href="/signup"
+                  >
+                    Register
+                  </a>
+                </div>
+              ) : (
+                <div className="sm:flex sm:gap-4">
+                  <a
+                    className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
+                    href="/AddProduct"
+                  >
+                    Add Product
+                  </a>
+
+                  <button
+                    className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
+                    onClick={() => signOut()}
+                  >
+                    LogOut
+                  </button>
+                </div>
+              )}
 
               {/* Begin of the Sm screens menu */}
 
@@ -205,17 +230,6 @@ export default function navbar() {
           <div className="px-4 py-2">
             <ul className="mt-6 space-y-1">
               <li>
-                <a
-                  href="#"
-                  className="block rounded-lg hover:bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
-                >
-                  New Products
-                </a>
-              </li>
-
-              <li></li>
-
-              <li>
                 <details className="group [&_summary::-webkit-details-marker]:hidden">
                   <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                     <span className="text-sm font-medium"> Account </span>
@@ -236,50 +250,76 @@ export default function navbar() {
                     </span>
                   </summary>
 
-                  <ul className="mt-2 space-y-1 px-4">
-                    <li>
-                      <a
-                        href="/profile"
-                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
-                      >
-                        Account Details
-                      </a>
-                    </li>
+                  {status === "authenticated" ? (
+                    <ul className="mt-2 space-y-1 px-4">
+                      <li>
+                        <a
+                          href="/Profile"
+                          className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                        >
+                          Account Details
+                        </a>
+                      </li>
 
-                    <li>
-                      <button
-                        type="submit"
-                        className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 [text-align:_inherit] hover:bg-gray-100"
-                      >
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
+                      <li>
+                        <button
+                          type="submit"
+                          className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 [text-align:_inherit] hover:bg-gray-100"
+                          onClick={() => signOut()}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                      <li>
+                        <a
+                          href="/AddProduct"
+                          className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 [text-align:_inherit] hover:bg-gray-100"
+                        >
+                          Add Product
+                        </a>
+                      </li>
+                    </ul>
+                  ) : (
+                    <ul className="mt-2 space-y-1 px-4">
+                      <li className=" w-full">
+                        <a
+                          href="/signin"
+                          className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900  hover:bg-gray-100"
+                        >
+                          LogIn
+                        </a>
+                      </li>
+                    </ul>
+                  )}
                 </details>
               </li>
             </ul>
           </div>
 
-          <div className="sticky inset-x-0 bottom-0 border-t border-gray-300 ">
-            <a
-              href="#"
-              className="flex items-center gap-2  bg-green-600 p-4 hover:bg-gray-50"
-            >
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="size-10 rounded-full object-cover"
-              />
+          {session && (
+            <div className="sticky inset-x-0 bottom-0 border-t border-gray-300 ">
+              <a
+                href="#"
+                className="flex items-center gap-2  bg-green-600 p-4 hover:bg-gray-50"
+              >
+                <img
+                  alt=""
+                  src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                  className="size-10 rounded-full object-cover"
+                />
 
-              <div>
-                <p className="text-xs">
-                  <strong className="block font-medium">Eric Frusciante</strong>
+                <div>
+                  <p className="text-xs">
+                    <strong className="block font-medium">
+                      {session.user.name}
+                    </strong>
 
-                  <span> eric@frusciante.com </span>
-                </p>
-              </div>
-            </a>
-          </div>
+                    <span> {session.user.email} </span>
+                  </p>
+                </div>
+              </a>
+            </div>
+          )}
         </div>
       </header>
     </>
