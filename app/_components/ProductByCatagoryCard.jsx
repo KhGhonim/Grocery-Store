@@ -9,11 +9,11 @@ export default function ProductByCatagoryCard({ params }) {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("api/getProducts");
+      const res = await fetch(`/api/getProducts`);
 
       if (!res.ok) {
         notFound();
-      } 
+      }
 
       const data = await res.json();
 
