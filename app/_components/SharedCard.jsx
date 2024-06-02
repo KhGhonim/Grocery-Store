@@ -9,7 +9,7 @@ export default function SharedCard() {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("api/getProducts");
+      const res = await fetch("api/getProducts", {cache: "no-cache", next: {revalidate: 0}});
 
       if (!res.ok) {
         notFound();

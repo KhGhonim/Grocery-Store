@@ -65,6 +65,13 @@ export default function page() {
                 Welcome to Our Gorcery Store
               </h1>
 
+              <h1 className="mt-6 text-base font-bold text-gray-900 ">
+                If you want to try our Admin Panel try our Admin Email{" "}
+                <p className=" text-red-400">Email: admin@admin.com</p>{" "}
+                <p className=" text-red-400">Pw:123</p>
+                or <p className="text-green-400">Make your own Account and be visitor</p>
+              </h1>
+
               <form action="#" className="mt-8 grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3 ">
                   <label
