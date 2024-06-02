@@ -25,7 +25,6 @@ export default function page() {
     });
 
     const DataFromMongoDB = await IsUserExists.json();
-    console.log(DataFromMongoDB);
 
     if (DataFromMongoDB.user) {
       toast.warning("User already exists");

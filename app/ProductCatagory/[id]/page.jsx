@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Banner from "../../_components/Banner";
 import Footer from "../../_components/Footer";
 import Loading from "../../loading";
-import ProductByCatagoryCard from "./ProductByCatagoryCard";
+import ProductByCatagoryCard from "../../_components/ProductByCatagoryCard";
 
 export default function page({ params }) {
   return (
