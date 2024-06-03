@@ -63,7 +63,7 @@ export default function SharedCard() {
       {arrData.map((item) => {
         return (
           <div
-            key={item.name}
+            key={item.image}
             className="flex flex-col items-center justify-between p-2 max-sm:w-[270px] md:w-[350px]  border border-s my-5 transition-transform duration-300 shadow-md hover:shadow-lg rounded-lg"
           >
             <Image

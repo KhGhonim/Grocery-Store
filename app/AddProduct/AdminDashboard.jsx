@@ -103,7 +103,7 @@ export default function AdminDashboard() {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none"
                   placeholder="Enter Name of the Catagory"
                   onChange={(eo) => {
-                    setcatagory(eo.target.value);
+                    setcatagory(eo.target.value.toLowerCase());
                   }}
                   required
                 />

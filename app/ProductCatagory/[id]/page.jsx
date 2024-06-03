@@ -11,12 +11,12 @@ export default function page({ params }) {
       <Navbar />
 
       <div className="bg-green-500 text-center py-4">
-        <h1 className="text-white text-2xl">{params.id}</h1>
+        <h1 className="text-white text-2xl">{params.id.toUpperCase()}</h1>
       </div>
 
       <div className="flex-grow">
         <Suspense fallback={<Loading />}>
-          <ProductByCatagoryCard params={params.id}  />
+          <ProductByCatagoryCard params={params.id} />
         </Suspense>
       </div>
 

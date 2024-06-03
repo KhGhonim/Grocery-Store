@@ -6,15 +6,19 @@ import { CiSearch } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
 import { CatagoryData } from "../db/db";
 import { signOut, useSession } from "next-auth/react";
+import {  useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function navbar() {
   const { data: session, status } = useSession();
   const [isArrowClicked, setIsArrowClicked] = useState(false);
   const [IsCatagoryClicked, setIsCatagoryClicked] = useState(false);
   const [Menu, setMenu] = useState(false);
+  const [query, setquery] = useState(null);
   const MyCatagoryRef = useRef(null);
   const MyMenuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const router = useRouter();
 
   const handleArrow = () => {
     setIsArrowClicked((prev) => !prev);
@@ -46,12 +50,19 @@ export default function navbar() {
     };
   }, []);
 
+
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    router.replace(`/Search?q=${query}`);
+  };
+
   return (
     <>
       <header className="bg-white">
         <div className=" flex h-16 max-w-screen items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-sm my-3">
           {/* Logo photo */}
-          <a className=" flex items-center gap-2 p-1" href="/">
+          <Link className=" flex items-center gap-2 p-1" href="/">
             <Image
               src={"/images/logo.png"}
               alt={""}
@@ -72,17 +83,17 @@ export default function navbar() {
                 Store
               </h1>
             </div>
-          </a>
+          </Link>
 
           <div className="flex flex-1 items-center justify-end md:justify-between">
             {/* Dropdown Catagory */}
             <nav aria-label="Global" className="hidden md:block">
-              <div
-                ref={MyCatagoryRef}
-                onClick={handleArrow}
-                className="relative flex justify-around items-center gap-7 group cursor-pointer"
-              >
-                <div className="inline-flex items-center overflow-hidden rounded-full border bg-white">
+              <div className="relative flex justify-around items-center gap-7 group cursor-pointer">
+                <div
+                  ref={MyCatagoryRef}
+                  onClick={handleArrow}
+                  className="inline-flex items-center overflow-hidden rounded-full border bg-white"
+                >
                   <div className="flex justify-between items-center gap-4 border-e px-4 py-2  hover:bg-gray-50 hover:text-gray-700">
                     <Image
                       src={"/images/menu.png"}
@@ -116,13 +127,13 @@ export default function navbar() {
                             key={item.name}
                             className="text-gray-500 hover:text-white hover:!bg-green-600 rounded-full p-2"
                           >
-                            <a
+                            <Link
                               href={`/ProductCatagory/${item.link}`}
                               className="flex justify-evenly items-center gap-5 w-max cursor-pointer"
                             >
                               <span>{item.icon}</span>
                               <span>{item.name}</span>
-                            </a>
+                            </Link>
                           </div>
                         );
                       })}
@@ -132,25 +143,28 @@ export default function navbar() {
 
                 {/* Begin of the Search  */}
 
-                <div className=" w-85 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm">
-                  <span className="px-3 border-r-2 border-gray-300 text-gray-500">
+                <form onSubmit={handleSearch}  className=" w-85 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm">
+                  <button type="submit" className="px-3 border-r-2 border-gray-300 text-gray-500">
                     <CiSearch />
-                  </span>
+                  </button>
                   <input
                     type="search"
                     name="Search"
                     id="Search"
                     placeholder="Search your product"
                     className="w-full px-3 text-gray-700 bg-transparent border-none focus:outline-none focus:ring-0"
+                    onChange={(eo) => {
+                      setquery(eo.target.value);
+                    }}
                   />
-                </div>
+                </form>
               </div>
             </nav>
 
             {/* Begin of the Basket */}
 
             <div className="flex items-center gap-4 max-sm:gap-2 cursor-pointer ">
-              <a
+              <Link
                 href="/Cart"
                 className="flex justify-center items-center gap-1 rounded-md bg-green-400 transition-all duration-100 hover:bg-green-600 px-3 py-2 "
               >
@@ -163,42 +177,33 @@ export default function navbar() {
                   quality={100}
                 />
                 <span>(0)</span>
-              </a>
+              </Link>
 
               {/* Begin of the Authentication */}
               {status === "loading" ? (
-                <div className="lds-ellipsis">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                <div className="sm:flex sm:gap-4 animate-pulse">
+                  <div className="hidden rounded-md bg-gray-200 px-5 py-2.5 sm:block"></div>
+                  <div className="hidden rounded-md bg-gray-200 px-5 py-2.5 sm:block mt-2 sm:mt-0"></div>
                 </div>
               ) : status === "unauthenticated" ? (
                 <div className="sm:flex sm:gap-4">
-                  <a
+                  <Link
                     className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
                     href="/signin"
                   >
                     Login
-                  </a>
-
-                  <a
-                    className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
-                    href="/signup"
-                  >
-                    Register
-                  </a>
+                  </Link>
                 </div>
               ) : (
                 <div className="sm:flex sm:gap-4">
                   {status === "authenticated" &&
                     session.user.email === "admin@admin.com" && (
-                      <a
+                      <Link
                         className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
                         href="/AddProduct"
                       >
                         Add Product
-                      </a>
+                      </Link>
                     )}
 
                   <button
@@ -256,12 +261,12 @@ export default function navbar() {
                   {status === "authenticated" ? (
                     <ul className="mt-2 space-y-1 px-4">
                       <li>
-                        <a
+                        <Link
                           href="/Profile"
                           className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100"
                         >
                           Account Details
-                        </a>
+                        </Link>
                       </li>
 
                       <li>
@@ -274,23 +279,23 @@ export default function navbar() {
                         </button>
                       </li>
                       <li>
-                        <a
+                        <Link
                           href="/AddProduct"
                           className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 [text-align:_inherit] hover:bg-gray-100"
                         >
                           Add Product
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   ) : (
                     <ul className="mt-2 space-y-1 px-4">
                       <li className=" w-full">
-                        <a
+                        <Link
                           href="/signin"
                           className="block w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900  hover:bg-gray-100"
                         >
                           LogIn
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   )}
@@ -301,7 +306,7 @@ export default function navbar() {
 
           {session && (
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-300 ">
-              <a
+              <Link
                 href="#"
                 className="flex items-center gap-2  bg-green-600 p-4 hover:bg-gray-50"
               >
@@ -320,7 +325,7 @@ export default function navbar() {
                     <span> {session.user.email} </span>
                   </p>
                 </div>
-              </a>
+              </Link>
             </div>
           )}
         </div>

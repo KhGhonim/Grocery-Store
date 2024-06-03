@@ -1,11 +1,12 @@
 export const CatagoryData = [
-  { id: 1, name: "Fruits", icon: "🍊", link: "Fruits" },
-  { id: 2, name: "Vegetables", icon: "🥦", link: "Vegetables" },
-  { id: 3, name: "Milk-Juice", icon: "🥛", link: "Milk-Juice" },
-  { id: 4, name: "Bakery", icon: "🥖", link: "Bakery" },
-  { id: 5, name: "Personal-Care", icon: "🧴", link: "Personal-Care" },
-  { id: 6, name: "Grains", icon: "🌾", link: "Grains" },
-  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "Chicken" },
+  { id: 1, name: "Fruits", icon: "🍊", link: "fruits" },
+  { id: 2, name: "Vegetables", icon: "🥦", link: "vegetables" },
+  { id: 3, name: "Milk", icon: "🥛", link: "milk" },
+  { id: 4, name: "Bakery", icon: "🥖", link: "bakery" },
+  { id: 5, name: "Personal-Care", icon: "🧴", link: "personalcare" },
+  { id: 6, name: "Grains", icon: "🌾", link: "grains" },
+  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "chicken" },
+  { id: 7, name: "Juice", icon: "🥤", link: "juice" },
 ];
 
 export const PopProducts = [
@@ -52,4 +53,3 @@ export const PopProducts = [
     price: 4.99,
   },
 ];
-
