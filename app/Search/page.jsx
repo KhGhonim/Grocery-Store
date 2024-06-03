@@ -35,7 +35,7 @@ export default function page() {
     };
 
     getData();
-  }, []);
+  }, [search]);
 
   if (!Data || Data.length === 0) {
     return (
