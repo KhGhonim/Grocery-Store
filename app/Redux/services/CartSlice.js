@@ -1,12 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  SelectedProducts:  [],
+const getInitialSelectedProducts = () => {
+  if (typeof window !== "undefined") {
+    const savedProducts = localStorage.getItem("SelectedProducts");
+    return savedProducts ? JSON.parse(savedProducts) : [];
+  }
+  return [];
 };
 
-// JSON.parse(localStorage.getItem("SelectedProducts"))
-//     ? JSON.parse(localStorage.getItem("SelectedProducts"))
-//     :
+const initialState = {
+  SelectedProducts: getInitialSelectedProducts(),
+};
+
 export const cartSlice = createSlice({
   name: "Cart",
   initialState,
@@ -67,12 +72,11 @@ export const cartSlice = createSlice({
       console.log(NewProductArryForFavori);
 
       state.SelectedProducts = NewProductArryForFavori;
-    
+
       localStorage.setItem(
         "SelectedProducts",
         JSON.stringify(state.SelectedProducts)
       );
-
     },
   },
 });

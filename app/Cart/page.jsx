@@ -54,8 +54,8 @@ export default function page() {
                             className=" w-28 h-28"
                             src={item.image}
                             alt={item.name}
-                            width={30}
-                            height={30}
+                            width={112} 
+                            height={112}
                             quality={100}
                           />
                           <label htmlFor="counter-input" className="sr-only">
@@ -130,44 +130,6 @@ export default function page() {
                   </h1>
                 </div>
               )}
-              <div className=" mt-8  ">
-                <h3 className="text-2xl font-semibold text-green-600 dark:text-white">
-                  People also bought
-                </h3>
-                <div className="flex flex-wrap justify-between gap-10 max-sm:justify-center ">
-                  {PopProducts.map((item) => {
-                    return (
-                      <div className="  mt-6  sm:mt-8 border border-solid border-gray-300 shadow-md p-6 rounded-lg text-center">
-                        <Image
-                          className="mx-auto h-44 w-44 dark:hidden"
-                          src={item.image}
-                          width={35}
-                          height={35}
-                          quality={100}
-                          alt={item.name}
-                        />
-
-                        <div className="mt-2">
-                          <h1 className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">
-                            {item.name}
-                          </h1>
-                        </div>
-                        <div className="mt-2">
-                          <p className="text-lg font-bold text-gray-900 dark:text-white">
-                            <span className="line-through">
-                              {" "}
-                              ${item.Fakeprice}{" "}
-                            </span>
-                          </p>
-                          <p className="text-lg font-bold leading-tight text-red-600 dark:text-red-500">
-                            ${item.price}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
             </div>
 
             {SelectedProducts.length > 0 && (
@@ -235,6 +197,45 @@ export default function page() {
                 </div>
               </div>
             )}
+          </div>
+
+          <div className=" mt-8  ">
+            <h3 className="text-2xl font-semibold text-green-600 dark:text-white">
+              People also bought
+            </h3>
+            <div className="flex flex-wrap justify-between gap-10 max-sm:justify-center ">
+              {PopProducts.map((item) => {
+                return (
+                  <div key={item.name} className="  mt-6  sm:mt-8 border border-solid border-gray-300 shadow-md p-6 rounded-lg text-center">
+                    <Image
+                      className="mx-auto h-44 w-44 dark:hidden"
+                      src={item.image}
+                      width={150}
+                      height={150}
+                      quality={100}
+                      alt={item.name}
+                    />
+
+                    <div className="mt-2">
+                      <h1 className="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">
+                        {item.name}
+                      </h1>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-lg font-bold text-gray-900 dark:text-white">
+                        <span className="line-through">
+                          {" "}
+                          ${item.Fakeprice}{" "}
+                        </span>
+                      </p>
+                      <p className="text-lg font-bold leading-tight text-red-600 dark:text-red-500">
+                        ${item.price}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
