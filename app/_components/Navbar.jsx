@@ -6,8 +6,9 @@ import { CiSearch } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
 import { CatagoryData } from "../db/db";
 import { signOut, useSession } from "next-auth/react";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function navbar() {
   const { data: session, status } = useSession();
@@ -50,7 +51,8 @@ export default function navbar() {
     };
   }, []);
 
-
+  // @ts-ignore
+  const { SelectedProducts } = useSelector((state) => state.carttt);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -143,8 +145,14 @@ export default function navbar() {
 
                 {/* Begin of the Search  */}
 
-                <form onSubmit={handleSearch}  className=" w-85 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm">
-                  <button type="submit" className="px-3 border-r-2 border-gray-300 text-gray-500">
+                <form
+                  onSubmit={handleSearch}
+                  className=" w-85 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm"
+                >
+                  <button
+                    type="submit"
+                    className="px-3 border-r-2 border-gray-300 text-gray-500"
+                  >
                     <CiSearch />
                   </button>
                   <input
@@ -176,7 +184,7 @@ export default function navbar() {
                   priority={true}
                   quality={100}
                 />
-                <span>(0)</span>
+                <span>{SelectedProducts.length}</span>
               </Link>
 
               {/* Begin of the Authentication */}
