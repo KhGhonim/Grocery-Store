@@ -4,6 +4,9 @@ const initialState = {
   SelectedProducts:  [],
 };
 
+// JSON.parse(localStorage.getItem("SelectedProducts"))
+//     ? JSON.parse(localStorage.getItem("SelectedProducts"))
+//     :
 export const cartSlice = createSlice({
   name: "Cart",
   initialState,
