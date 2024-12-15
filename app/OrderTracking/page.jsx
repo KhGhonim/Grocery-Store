@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { CiLock, CiMapPin } from "react-icons/ci";
-import { FaCheckCircle } from "react-icons/fa";
+import { CiMapPin } from "react-icons/ci";
+
 import { orderStatus } from "../db/db";
 import DeliveryFeedbackSection from "../_components/OrderTracking/DeliveryFeedbackSection";
 import DeliveryInstructionsSection from "../_components/OrderTracking/DeliveryInstructionsSection";

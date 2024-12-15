@@ -2,7 +2,6 @@
 
 import { notFound, useSearchParams } from "next/navigation";
 import Footer from "../_components/Footer";
-import Navbar from "../_components/Header/HeaderTwo/HeaderTwo";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { MdAddShoppingCart } from "react-icons/md";
@@ -78,7 +77,6 @@ export default function page() {
 
   return (
     <>
-      <Navbar />
 
       <div className="flex justify-around flex-wrap max-sm:items-center gap-2 h-full mb-5">
         {Data.map((item) => {
