@@ -14,13 +14,13 @@ export const authOptions = {
         await connectMongoDB();
         const user = await UserModal.findOne({
           // @ts-ignore
-          email: credentials.email,
+          email: credentials?.email,
         });
 
         if (user) {
           const match = await bcrypt.compare(
             // @ts-ignore
-            credentials.password,
+            credentials?.password,
             user.password
           );
 
