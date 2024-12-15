@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/services/store";
 import Banner from "./_components/Banner";
 import Footer from "./_components/Footer";
-import Header from "./_components/HeaderDesktop/Header";
+import DesktopHeader from "./_components/HeaderDesktop/DesktopHeader";
 import MobileHeader from "./_components/HeaderPhone/MobileHeader.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <Provider store={store}>
           <AuthProvider>
             <MobileHeader />
-            <Header />
+            <DesktopHeader />
             {children}
             <Banner />
             <Footer />
