@@ -5,7 +5,7 @@ export default function Catagory() {
   return (
     <div className="px-6 text-green-600 font-extrabold text-center w-full my-8 flex flex-col flex-wrap  ">
       <h1 className="">Shop by Catagory</h1>
-      <div className="flex justify-between items-center max-sm:flex-col sm:flex-wrap p-2">
+      <div className="flex flex-wrap justify-between gap-2 items-center p-2">
         {CatagoryData.map((item) => {
           return (
             <Link

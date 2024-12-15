@@ -8,7 +8,7 @@ import "./styles.css";
 
 export default function HearoSeaction() {
   return (
-    <div>
+    <div className="max-lg:pt-20">
       <div className=" min-w  px-5 my-9  ">
         <Swiper
           spaceBetween={30}
@@ -26,12 +26,16 @@ export default function HearoSeaction() {
         >
           {/* Desktop Images */}
           <SwiperSlide className="!hidden md:!block ">
-            <img src="/slider/slider1.png" alt="slider1" className="rounded-2xl" />
+            <img
+              src="/slider/slider1.png"
+              alt="slider1"
+              className="rounded-2xl"
+            />
           </SwiperSlide>
           <SwiperSlide className="!hidden md:!block ">
             <img src="/slider/slider2.jpg" alt="slider2 " />
           </SwiperSlide>
-          
+
           {/* Mobile Images */}
           <SwiperSlide className="block md:!hidden ">
             <img src="/slider/PhoneSlider1.jpeg" alt="slider1" className="" />

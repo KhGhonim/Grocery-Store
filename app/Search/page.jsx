@@ -2,7 +2,7 @@
 
 import { notFound, useSearchParams } from "next/navigation";
 import Footer from "../_components/Footer";
-import Navbar from "../_components/Navbar";
+import Navbar from "../_components/Header/HeaderTwo/HeaderTwo";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { MdAddShoppingCart } from "react-icons/md";

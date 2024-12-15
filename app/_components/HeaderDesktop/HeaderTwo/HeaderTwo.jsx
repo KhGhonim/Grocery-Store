@@ -2,13 +2,15 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
-import { CiSearch } from "react-icons/ci";
+import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
-import { CatagoryData } from "../db/db";
+import { CatagoryData } from "../../../db/db";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { FaPlus, FaSignOutAlt } from "react-icons/fa";
+import { IoIosGitCompare, IoMdHeartEmpty } from "react-icons/io";
 
 export default function navbar() {
   const { data: session, status } = useSession();
@@ -61,7 +63,7 @@ export default function navbar() {
 
   return (
     <>
-      <header className="bg-white">
+      <header className="hidden lg:block bg-white">
         <div className=" flex h-16 max-w-screen items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-sm my-3">
           {/* Logo photo */}
           <Link className=" flex items-center gap-2 p-1" href="/">
@@ -147,7 +149,7 @@ export default function navbar() {
 
                 <form
                   onSubmit={handleSearch}
-                  className=" w-85 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm"
+                  className=" w-96 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm"
                 >
                   <button
                     type="submit"
@@ -169,56 +171,101 @@ export default function navbar() {
               </div>
             </nav>
 
-            {/* Begin of the Basket */}
+            {/* Begin of the Whishlist / Cart / Account */}
+            <div className="flex items-center gap-6 max-sm:gap-2 cursor-pointer ">
+              <Link
+                href="/Wishlist"
+                className="flex items-center gap-2 hover:text-green-600"
+              >
+                <div className="relative">
+                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    0
+                  </span>
+                  <IoMdHeartEmpty size={30} />
+                </div>{" "}
+                <div className="text-sm">
+                  <div>Wishlist</div>
+                </div>
+              </Link>
 
-            <div className="flex items-center gap-4 max-sm:gap-2 cursor-pointer ">
               <Link
                 href="/Cart"
-                className="flex justify-center items-center gap-1 rounded-md bg-green-400 transition-all duration-100 hover:bg-green-600 px-3 py-2 "
+                className="flex items-center gap-2 hover:text-green-600"
               >
-                <Image
-                  src={"/images/shopping-basket.png"}
-                  alt={"shopping-basket"}
-                  width={20}
-                  height={20}
-                  priority={true}
-                  quality={100}
-                />
-                <span>{SelectedProducts.length}</span>
+                <div className="relative">
+                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    0
+                  </span>
+                  <CiShoppingCart size={30} />
+                </div>
+                <div className="text-base">
+                  <div>Cart</div>
+                </div>
+              </Link>
+
+              <Link
+                href="/Compare"
+                className="flex items-center gap-2 hover:text-green-600"
+              >
+                <div className="relative">
+                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    0
+                  </span>
+                  <IoIosGitCompare size={30} />
+                </div>
+                <div className="text-base">
+                  <div>Compare</div>
+                </div>
               </Link>
 
               {/* Begin of the Authentication */}
+              {/* Render loading state for authentication */}
               {status === "loading" ? (
                 <div className="sm:flex sm:gap-4 animate-pulse">
+                  {/* Hidden elements for small screens */}
                   <div className="hidden rounded-md bg-gray-200 px-5 py-2.5 sm:block"></div>
                   <div className="hidden rounded-md bg-gray-200 px-5 py-2.5 sm:block mt-2 sm:mt-0"></div>
                 </div>
               ) : status === "unauthenticated" ? (
                 <div className="sm:flex sm:gap-4">
+                  {/* Login button for unauthenticated users */}
+
                   <Link
-                    className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
                     href="/signin"
+                    className="flex items-center gap-2 hover:text-green-600"
                   >
-                    Login
+                    <CiUser size={30} />
+                    <div className="text-sm">
+                      <div>Account</div>
+                    </div>
                   </Link>
                 </div>
               ) : (
                 <div className="sm:flex sm:gap-4">
+                  {/* Add Product button for admin user */}
                   {status === "authenticated" &&
                     session.user.email === "admin@admin.com" && (
                       <Link
-                        className="hidden rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-green-700 sm:block"
                         href="/AddProduct"
+                        className="flex items-center gap-2 hover:text-green-600"
                       >
-                        Add Product
+                        <FaPlus size={24} />
+                        <div className="text-sm">
+                          <div>Add Product</div>
+                          <div className="text-xs text-gray-500">
+                            For Admins
+                          </div>
+                        </div>
                       </Link>
                     )}
 
+                  {/* Logout button for authenticated users */}
                   <button
-                    className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-green-600 transition hover:text-green-600/75 sm:block"
+                    className="flex flex-col items-center gap-2 hover:text-green-600"
                     onClick={() => signOut()}
                   >
-                    LogOut
+                    <FaSignOutAlt size={24} />
+                    <div className="text-xs text-gray-500">Sign Out</div>
                   </button>
                 </div>
               )}
@@ -235,8 +282,8 @@ export default function navbar() {
             </div>
           </div>
         </div>
-        {/* Begin of the Sm Drawer */}
 
+        {/* Begin of the Sm Drawer */}
         <div
           ref={MyMenuRef}
           className={`fixed right-0  h-screen w-72 transform transition-transform duration-300 ease-in-out ${

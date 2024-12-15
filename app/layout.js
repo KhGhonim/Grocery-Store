@@ -1,9 +1,13 @@
-"use client"
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "./providers/AuthProvider";
 import { Provider } from "react-redux";
 import { store } from "./Redux/services/store";
+import Banner from "./_components/Banner";
+import Footer from "./_components/Footer";
+import Header from "./_components/HeaderDesktop/Header";
+import MobileHeader from "./_components/HeaderPhone/MobileHeader.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +22,16 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-      <Provider store={store}>
-
-        <AuthProvider>{children}</AuthProvider>
+      <body className={`${inter.className} overflow-x-hidden`}>
+        <Provider store={store}>
+          <AuthProvider>
+            <MobileHeader />
+            <Header />
+            {children}
+            <Banner />
+            <Footer />
+          </AuthProvider>
         </Provider>
-
       </body>
     </html>
   );

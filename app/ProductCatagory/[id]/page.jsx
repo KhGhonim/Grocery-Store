@@ -1,4 +1,4 @@
-import Navbar from "../../_components/Navbar";
+import Navbar from "../../_components/Header/HeaderTwo/HeaderTwo";
 import { Suspense } from "react";
 import Banner from "../../_components/Banner";
 import Footer from "../../_components/Footer";

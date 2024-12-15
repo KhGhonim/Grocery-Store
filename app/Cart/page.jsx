@@ -1,6 +1,6 @@
 "use client";
 import Footer from "../_components/Footer";
-import Navbar from "../_components/Navbar";
+import Navbar from "../_components/Header/HeaderTwo/HeaderTwo";
 import Banner from "../_components/Banner";
 import Link from "next/link";
 import { FaLongArrowAltRight } from "react-icons/fa";
