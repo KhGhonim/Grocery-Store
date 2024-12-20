@@ -35,7 +35,7 @@
     "pages/**/*",
     "tests/**/*",
     "configs/**/*"
-  ],
+, "tailwind.config.js"  ],
   "exclude": [
     "node_modules",
     "build",

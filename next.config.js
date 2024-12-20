@@ -1,5 +1,3 @@
-
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -11,6 +9,11 @@ module.exports = {
       {
         protocol: "http",
         hostname: "res.cloudinary.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
         port: "",
       },
     ],
