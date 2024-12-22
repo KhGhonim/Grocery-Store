@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import MobileDrawer from "./MobileDrawer";
@@ -10,6 +10,22 @@ import PhoneNavbar from "./PhoneNavbar";
 
 export default function MobileHeader() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsHidden(false);
+      } else {
+        setIsHidden(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHidden]);
 
   return (
     <>
@@ -59,8 +75,9 @@ export default function MobileHeader() {
       <MobileDrawer
         isOpen={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
+        isHidden={isHidden}
       />
-      <PhoneNavbar />
+      <PhoneNavbar isHidden={isHidden} />
     </>
   );
 }

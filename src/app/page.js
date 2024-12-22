@@ -4,10 +4,12 @@ import DailyBestSells from "_components/Client/DailyBestSells/DailyBestSells";
 import DealsOfTheDay from "_components/Client/DealsOfTheDay/DealsOfTheDay";
 import FixedCards from "_components/Client/FixedCards/FixedCards";
 import HearoSeaction from "_components/Client/HearoSeaction/HearoSeaction";
+import ProductGrid from "_components/Client/ProductGrid/ProductGrid";
 import Footer from "_components/Footer";
 import DesktopHeader from "_components/HeaderDesktop/DesktopHeader";
 import MobileHeader from "_components/HeaderPhone/MobileHeader";
 import Products from "_components/Products";
+import WelcomeModal from "_components/WelcomeModal/WelcomeModal";
 
 export const metadata = {
   title: "KG Grocery App",
@@ -30,8 +32,10 @@ export default function Home() {
         <FixedCards />
         <DailyBestSells />
       </div>
+      <ProductGrid />
       <Banner />
       <Footer />
+      <WelcomeModal />
     </>
   );
 }

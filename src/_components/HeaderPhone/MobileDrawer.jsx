@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function MobileDrawer({ isOpen, onClose }) {
+export default function MobileDrawer({ isOpen, onClose, isHidden }) {
   const [activeTab, setActiveTab] = useState("menu");
 
   const ref = useRef(null);
@@ -161,7 +161,11 @@ export default function MobileDrawer({ isOpen, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 right-0 border-t bg-white p-4 space-y-3">
+        <div
+          className={`absolute ${
+            isHidden ? "bottom-2" : "bottom-14"
+          } left-0 right-0 border-t bg-white p-4 space-y-3 transition-all duration-150 ease-in-out`}
+        >
           <div className="grid grid-cols-2 gap-2 mt-1">
             <Link
               href="/signup"

@@ -21,8 +21,6 @@ export default function DailyBestSellsSwipear({ product }) {
   const handleHoveringItem = (item) => {
     setWhichSwipear(item);
   };
-  
-  
 
   return (
     <div className="w-full h-full p-5 lg:p-10">
@@ -70,7 +68,7 @@ export default function DailyBestSellsSwipear({ product }) {
               >
                 {/* Discount Badge */}
                 {true && (
-                  <div className="absolute top-0 left-0 bg-green-500 text-white px-2 py-1 rounded-br-xl text-sm z-10">
+                  <div className="absolute top-0 left-0 bg-green-500 text-white px-4 py-1 rounded-br-xl text-sm z-10">
                     {item.discount}%
                   </div>
                 )}
@@ -87,7 +85,6 @@ export default function DailyBestSellsSwipear({ product }) {
                   <div
                     className={`absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center gap-4 transition-opacity duration-300 ${
                       WhichSwipear === i ? "opacity-100" : "opacity-0"
-
                     }`}
                   >
                     <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
@@ -132,24 +129,22 @@ export default function DailyBestSellsSwipear({ product }) {
 
                   {/* Price */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
                       <span className="text-green-500 font-semibold">
                         ${item.price.toFixed(2)}
                       </span>
-                      {item.originalPrice && (
+                      {item.Fakeprice && (
                         <span className="text-gray-400 line-through text-sm">
-                          ${item.originalPrice.toFixed(2)}
+                          ${item.Fakeprice.toFixed(2)}
                         </span>
                       )}
-                    </div>
-                    <button
-                      onClick={() => CartHandler(item)}
-                      className="flex items-center gap-1 bg-green-100 text-green-600 px-3 py-1 rounded-full hover:bg-green-500 hover:text-white transition-colors"
-                    >
-                      <FaShoppingBag size={16} />
-                      Add
-                    </button>
                   </div>
+                  <button
+                    onClick={() => CartHandler(item)}
+                    className="flex w-full items-center gap-1 bg-green-600 text-white justify-center px-3 py-1 rounded-full hover:bg-green-500 hover:text-white transition-colors"
+                  >
+                    <FaShoppingBag size={16} />
+                    Add
+                  </button>
                 </div>
               </SwiperSlide>
             );
