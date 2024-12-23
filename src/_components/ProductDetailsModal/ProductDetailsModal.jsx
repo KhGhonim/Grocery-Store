@@ -38,7 +38,7 @@ export default function ProductDetailsModal({ product, isOpen, onClose }) {
                 Related Products
               </h3>
               <RelatedProducts
-                catagory={product.catagory}
+                category={product.category}
                 currentProductId={product._id}
               />
             </div>

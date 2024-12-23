@@ -1,9 +1,9 @@
 "use client";
-import ProductCard from "_components/Client/ProductGrid/ProductCard";
+import ProductCard from "../../_components/Client/ProductGrid/ProductCard";
 import { notFound } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function RelatedProducts({ catagory, currentProductId }) {
+export default function RelatedProducts({ category, currentProductId }) {
   const [arrData, setstate] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function RelatedProducts({ catagory, currentProductId }) {
   }, []);
 
   const relatedProducts = arrData
-    .filter((p) => p.catagory === catagory && p._id !== currentProductId)
+    .filter((p) => p.category === category && p._id !== currentProductId)
     .slice(0, 3);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
