@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaShoppingBag, FaStar } from "react-icons/fa";
 import { FaEye, FaHeart } from "react-icons/fa6";
 import { LuBarChart2 } from "react-icons/lu";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../../../Redux/services/CartSlice";
@@ -55,11 +55,8 @@ export default function DailyBestSellsSwipear({ product }) {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        navigation={{
-          nextEl: ".swiper-button-next-sells-container",
-          prevEl: ".swiper-button-prev-sells-container",
-        }}
-        modules={[Autoplay, Navigation]}
+
+        modules={[Autoplay]}
         className="mySwiper w-full h-full "
         onSlideChange={(swiper) => {
           setWhichSwipear(swiper.activeIndex);
