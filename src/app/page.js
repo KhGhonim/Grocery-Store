@@ -1,16 +1,16 @@
-import Banner from "_components/Banner";
-import Catagory from "_components/Catagory";
-import DailyBestSells from "_components/Client/DailyBestSells/DailyBestSells";
-import DealsOfTheDay from "_components/Client/DealsOfTheDay/DealsOfTheDay";
-import FixedCards from "_components/Client/FixedCards/FixedCards";
-import HearoSeaction from "_components/Client/HearoSeaction/HearoSeaction";
-import ProductGrid from "_components/Client/ProductGrid/ProductGrid";
-import Footer from "_components/Footer";
-import DesktopHeader from "_components/HeaderDesktop/DesktopHeader";
-import MobileHeader from "_components/HeaderPhone/MobileHeader";
-import PhoneAd from "_components/HeaderPhone/PhoneAd";
-import Products from "_components/Products";
-import WelcomeModal from "_components/WelcomeModal/WelcomeModal";
+import Banner from "../../src/_components/Banner";
+import Catagory from "../../src/_components/Catagory";
+import DailyBestSells from "../../src/_components/Client/DailyBestSells/DailyBestSells";
+import DealsOfTheDay from "../../src/_components/Client/DealsOfTheDay/DealsOfTheDay";
+import FixedCards from "../../src/_components/Client/FixedCards/FixedCards";
+import HearoSeaction from "../../src/_components/Client/HearoSeaction/HearoSeaction";
+import ProductGrid from "../../src/_components/Client/ProductGrid/ProductGrid";
+import Footer from "../../src/_components/Footer";
+import DesktopHeader from "../../src/_components/HeaderDesktop/DesktopHeader";
+import MobileHeader from "../../src/_components/HeaderPhone/MobileHeader";
+import PhoneAd from "../../src/_components/HeaderPhone/PhoneAd";
+import Products from "../../src/_components/Products";
+import WelcomeModal from "../../src/_components/WelcomeModal/WelcomeModal";
 
 
 export const metadata = {

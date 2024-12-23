@@ -16,7 +16,7 @@ export default function ProductCard({ product }) {
           quality={100}
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full rounded-xl object-cover"
         />
       </div>
       <div className="flex-1 flex flex-col">

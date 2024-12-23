@@ -31,7 +31,7 @@ export default function ProductDetailsModal({ product, isOpen, onClose }) {
               <ProductInfo product={product} />
             </div>
 
-            <ProductTabs product={product} />
+            <ProductTabs />
 
             <div className="mt-12">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
