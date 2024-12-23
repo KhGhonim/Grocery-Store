@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { AddToCart } from "../../../Redux/services/CartSlice";
 import { toast } from "react-toastify";
 import "swiper/css";
-import ProductDetailsModal from "_components/ProductDetailsModal/ProductDetailsModal";
+import ProductDetailsModal from "../../../_components/ProductDetailsModal/ProductDetailsModal";
 
 export default function DailyBestSellsSwipear({ product }) {
   const [WhichSwipear, setWhichSwipear] = useState(null);
