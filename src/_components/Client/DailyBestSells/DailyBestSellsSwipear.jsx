@@ -8,8 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../../../Redux/services/CartSlice";
 import { toast } from "react-toastify";
-import "swiper/css";
 import ProductDetailsModal from "../../../_components/ProductDetailsModal/ProductDetailsModal";
+import Image from "next/image";
 
 export default function DailyBestSellsSwipear({ product }) {
   const [WhichSwipear, setWhichSwipear] = useState(null);
@@ -65,24 +65,28 @@ export default function DailyBestSellsSwipear({ product }) {
           setWhichSwipear(swiper.activeIndex);
         }}
       >
-        {product.map((item, i) => {
+        {product?.map((item, i) => {
           return (
             <SwiperSlide
               key={i}
-              className="relative bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 mb-5 "
+              className="relative bg-white rounded-lg shadow-md overflow-hidden  transition-all duration-300 mb-5 "
               onMouseEnter={() => handleHoveringItem(i)}
               onMouseLeave={() => handleHoveringItem(null)}
             >
               {/* Discount Badge */}
-              {true && (
+
+              {item.discount !== 0 && (
                 <div className="absolute top-0 left-0 bg-green-500 text-white px-4 py-1 rounded-br-xl text-sm z-10">
                   {item.discount}%
                 </div>
               )}
-
               {/* Product Image */}
               <div className="relative h-60 overflow-hidden">
-                <img
+
+                <Image
+                  width={900}
+                  height={900}
+                  quality={100}
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
@@ -134,19 +138,19 @@ export default function DailyBestSellsSwipear({ product }) {
                   ))}
                 </div>
 
-                {/* Brand */}
-                <div className="text-sm text-gray-600 mb-2">
-                  By {item.brand}
+                {/* Stock */}
+                <div className="text-sm text-gray-400 my-2">
+                In the Stock: {item.stock}
                 </div>
 
                 {/* Price */}
                 <div className="flex items-center justify-between">
                   <span className="text-green-500 font-semibold">
-                    ${item.price.toFixed(2)}
+                    ${item?.price.toFixed(2)}
                   </span>
-                  {item.Fakeprice && (
+                  {item?.Fakeprice && (
                     <span className="text-gray-400 line-through text-sm">
-                      ${item.Fakeprice.toFixed(2)}
+                      ${item?.Fakeprice.toFixed(2)}
                     </span>
                   )}
                 </div>
@@ -163,11 +167,11 @@ export default function DailyBestSellsSwipear({ product }) {
         })}
       </Swiper>
 
-      <ProductDetailsModal
+      {/* <ProductDetailsModal
         product={ModelProduct}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      />
+      /> */}
     </div>
   );
 }

@@ -6,13 +6,16 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import DailyBestSellsSwipear from "./DailyBestSellsSwipear";
 import { notFound } from "next/navigation";
+import Loading from "../../../app/loading";
 
 export default function DailyBestSells() {
   const [activeCategory, setactiveCategory] = useState("all");
   const [arrData, setstate] = useState([]);
+  const [isloading, setisloading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
+      setisloading(true);
       const res = await fetch("api/getProducts", {
         cache: "no-cache",
         next: { revalidate: 0 },
@@ -27,6 +30,7 @@ export default function DailyBestSells() {
     };
 
     getData();
+    setisloading(false);
   }, []);
 
   const filteredProducts =
@@ -159,7 +163,11 @@ export default function DailyBestSells() {
             </ul>
           </div>
 
-          {/* <DailyBestSellsSwipear product={filteredProducts} /> */}
+          {isloading ? (
+            <Loading />
+          ) : (
+            <DailyBestSellsSwipear product={filteredProducts} />
+          )}
         </div>
       </div>
     </div>
