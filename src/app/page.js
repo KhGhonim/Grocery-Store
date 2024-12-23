@@ -34,7 +34,7 @@ export default function Home() {
         <Products />
         <FixedCards />
       </div>
-      <DailyBestSells />
+      {/* <DailyBestSells /> */}
       <ProductGrid />
       <Banner />
       <Footer />
