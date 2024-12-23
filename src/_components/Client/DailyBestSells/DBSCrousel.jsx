@@ -2,16 +2,16 @@
 import { useState } from "react";
 import { FaShoppingBag, FaStar } from "react-icons/fa";
 import { FaEye, FaHeart } from "react-icons/fa6";
-import { LuBarChart2 } from "react-icons/lu";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../../../Redux/services/CartSlice";
 import { toast } from "react-toastify";
-import ProductDetailsModal from "../../../_components/ProductDetailsModal/ProductDetailsModal";
+import ProductDetailsModal from "../../ProductDetailsModal/ProductDetailsModal";
 import Image from "next/image";
+import { FiBarChart } from "react-icons/fi";
 
-export default function DailyBestSellsSwipear({ product }) {
+export default function DBSCrousel({ product }) {
   const [WhichSwipear, setWhichSwipear] = useState(null);
   const [ModelProduct, setModelProduct] = useState(null);
   const dispatch = useDispatch();
@@ -55,8 +55,11 @@ export default function DailyBestSellsSwipear({ product }) {
           delay: 4000,
           disableOnInteraction: false,
         }}
-
-        modules={[Autoplay]}
+        navigation={{
+          nextEl: ".swiper-button-next-sells-container",
+          prevEl: ".swiper-button-prev-sells-container",
+        }}
+        modules={[Autoplay, Navigation]}
         className="mySwiper w-full h-full "
         onSlideChange={(swiper) => {
           setWhichSwipear(swiper.activeIndex);
@@ -107,7 +110,7 @@ export default function DailyBestSellsSwipear({ product }) {
                     <FaHeart size={20} />
                   </button>
                   <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
-                    <LuBarChart2 size={20} />
+                    <FiBarChart size={20} />
                   </button>
                 </div>
               </div>
@@ -164,11 +167,11 @@ export default function DailyBestSellsSwipear({ product }) {
         })}
       </Swiper>
 
-      {/* <ProductDetailsModal
+      <ProductDetailsModal
         product={ModelProduct}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      /> */}
+      />
     </div>
   );
 }

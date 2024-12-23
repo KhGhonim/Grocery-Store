@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RiArrowDropRightLine } from "react-icons/ri";
-import DailyBestSellsSwipear from "./DailyBestSellsSwipear";
+import DBSCrousel from "./DBSCrousel";
 import { notFound } from "next/navigation";
 import Loading from "../../../app/loading";
 
@@ -166,7 +166,7 @@ export default function DailyBestSells() {
           {isloading ? (
             <Loading />
           ) : (
-            <DailyBestSellsSwipear product={filteredProducts} />
+            <DBSCrousel product={filteredProducts} />
           )}
         </div>
       </div>
