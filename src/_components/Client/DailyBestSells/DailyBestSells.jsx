@@ -159,7 +159,7 @@ export default function DailyBestSells() {
             </ul>
           </div>
 
-          <DailyBestSellsSwipear product={filteredProducts} />
+          {/* <DailyBestSellsSwipear product={filteredProducts} /> */}
         </div>
       </div>
     </div>
