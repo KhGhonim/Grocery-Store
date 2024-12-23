@@ -31,7 +31,7 @@ export default function Home() {
       <div className="px-5">
         <DealsOfTheDay />
         <Catagory />
-        <Products />
+        {/* <Products /> */}
         <FixedCards />
       </div>
       <DailyBestSells />
