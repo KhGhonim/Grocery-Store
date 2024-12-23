@@ -1,6 +1,4 @@
 "use client";
-
-import { products } from "DB/db";
 import { notFound } from "next/navigation";
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import SharedCard from "./SharedCard";
-import Loading from "app/loading";
+import Loading from "../app/loading";
 export default function Products() {
   return (
     <div className=" text-green-600 font-extrabold text-center  my-8  ">
