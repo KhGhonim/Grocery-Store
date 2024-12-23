@@ -7,7 +7,15 @@ const productSchema = new Schema({
   name: String,
   Fakeprice: Number,
   price: Number,
-  catagory: String,
+  category: String,
+  rating: Number,
+  discount: Number,
+  description: String,
+  stock: Number,
+  images: [String],
+  type: String,
+
+
 });
 // Create a model based on that schema, and change the name of the model to match your liking.
 const ProductModel = models.Product || mongoose.model("Product", productSchema);

@@ -1,4 +1,4 @@
-import { CiHome, CiShoppingBasket } from "react-icons/ci";
+import { CiHome } from "react-icons/ci";
 import { FaGift } from "react-icons/fa";
 import { VscAccount } from "react-icons/vsc";
 import { CgTrack } from "react-icons/cg";
@@ -22,7 +22,6 @@ export default function PhoneNavbar({isHidden}) {
             label: "Order Tracking",
             icon: <CgTrack />,
           },
-          { href: "/Cart", label: "Cart", icon: <CiShoppingBasket /> },
         ].map((item, index) => (
           <Link
             key={index}

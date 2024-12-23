@@ -9,9 +9,11 @@ import { useDispatch } from "react-redux";
 import { AddToCart } from "../../../Redux/services/CartSlice";
 import { toast } from "react-toastify";
 import "swiper/css";
+import ProductDetailsModal from "_components/ProductDetailsModal/ProductDetailsModal";
 
 export default function DailyBestSellsSwipear({ product }) {
   const [WhichSwipear, setWhichSwipear] = useState(null);
+  const [ModelProduct, setModelProduct] = useState(null);
   const dispatch = useDispatch();
   const CartHandler = (product) => {
     dispatch(AddToCart(product));
@@ -20,6 +22,12 @@ export default function DailyBestSellsSwipear({ product }) {
 
   const handleHoveringItem = (item) => {
     setWhichSwipear(item);
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const HandleProductDetailsModal = (product) => {
+    setIsModalOpen(true);
+    setModelProduct(product);
   };
 
   return (
@@ -87,7 +95,12 @@ export default function DailyBestSellsSwipear({ product }) {
                       WhichSwipear === i ? "opacity-100" : "opacity-0"
                     }`}
                   >
-                    <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
+                    <button
+                      onClick={() => {
+                        HandleProductDetailsModal(item);
+                      }}
+                      className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors"
+                    >
                       <FaEye size={20} />
                     </button>
                     <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
@@ -129,14 +142,14 @@ export default function DailyBestSellsSwipear({ product }) {
 
                   {/* Price */}
                   <div className="flex items-center justify-between">
-                      <span className="text-green-500 font-semibold">
-                        ${item.price.toFixed(2)}
+                    <span className="text-green-500 font-semibold">
+                      ${item.price.toFixed(2)}
+                    </span>
+                    {item.Fakeprice && (
+                      <span className="text-gray-400 line-through text-sm">
+                        ${item.Fakeprice.toFixed(2)}
                       </span>
-                      {item.Fakeprice && (
-                        <span className="text-gray-400 line-through text-sm">
-                          ${item.Fakeprice.toFixed(2)}
-                        </span>
-                      )}
+                    )}
                   </div>
                   <button
                     onClick={() => CartHandler(item)}
@@ -150,6 +163,12 @@ export default function DailyBestSellsSwipear({ product }) {
             );
           })}
       </Swiper>
+
+      <ProductDetailsModal
+        product={ModelProduct}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }

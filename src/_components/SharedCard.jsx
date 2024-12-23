@@ -35,7 +35,7 @@ export default function SharedCard() {
 
   const [currentPage, setcurrentPage] = useState(1);
 
-  let itemsPerPage = 8;
+  let itemsPerPage = 7;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = arrData.slice(indexOfFirstItem, indexOfLastItem);

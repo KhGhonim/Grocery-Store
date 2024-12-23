@@ -56,8 +56,8 @@ export default function ProductGrid() {
               <span className="w-14 h-0.5 bg-green-800 inline-block"></span>
             </div>
             <div className="space-y-4">
-              {section.products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {section.products.map((product, index) => (
+                <ProductCard key={index} product={product} />
               ))}
             </div>
           </div>

@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
@@ -19,7 +20,9 @@ export default function ProductCard({ product }) {
         />
       </div>
       <div className="flex-1 flex flex-col">
-        <h3 className="text-sm lg:text-lg font-bold text-gray-800 ">{product.name}</h3>
+        <h3 className="text-sm lg:text-lg font-bold text-gray-800 ">
+          {product.name}
+        </h3>
         <div className="flex items-center mt-2">
           {[...Array(5)].map((_, starIndex) => (
             <FaStar
@@ -37,6 +40,7 @@ export default function ProductCard({ product }) {
           <p className="text-gray-300 line-through ">${product.Fakeprice}</p>
         </div>
       </div>
+
     </motion.div>
   );
 }

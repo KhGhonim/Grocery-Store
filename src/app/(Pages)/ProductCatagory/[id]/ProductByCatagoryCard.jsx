@@ -20,7 +20,9 @@ export default function ProductByCatagoryCard({ params }) {
 
       const data = await res.json();
       const fillteredData = data.filter((item) => {
-        return item.catagory === params;
+        return item.category.toLowerCase() === params ||
+          item.name.toLowerCase().includes(params) ||
+          item.category.toLowerCase().includes(params);
       });
       setData(fillteredData);
     };

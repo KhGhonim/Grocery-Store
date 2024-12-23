@@ -32,13 +32,17 @@ export default function DailyBestSells() {
   const filteredProducts =
     activeCategory === "all"
       ? arrData
-      : arrData.filter((product) => product.catagory === activeCategory);
+      : arrData.filter((product) => product.category === activeCategory);
 
   return (
     <div className="w-screen h-full mt-10">
-      <div className=" my-10 flex">
-        <div className="hidden lg:block  w-1/5 h-full relative">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-8">
+      <div className=" my-10 flex flex-col lg:flex-row text-center px-2 lg:px-5">
+        <h2 className="hidden max-lg:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-14">
+          Daily Best Sells
+        </h2>
+
+        <div className="hidden lg:block  w-1/5 h-full relative ">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-14">
             Daily Best Sells
           </h2>
           <Image
@@ -63,7 +67,7 @@ export default function DailyBestSells() {
         </div>
         <div className="w-full lg:w-4/5 h-full flex flex-col">
           <div className="w-full h-full relative flex items-start justify-around gap-5 mt-5 ">
-            <div className="flex gap-5">
+            <div className="hidden lg:flex gap-5">
               <div
                 className=" z-20 hidden lg:block transform -translate-y-1/2"
                 aria-label="Previous Slide"
@@ -88,7 +92,7 @@ export default function DailyBestSells() {
                 </button>
               </div>
             </div>
-            <ul className="flex gap-10">
+            <ul className="flex gap-5 lg:gap-10">
               <motion.li
                 onClick={() => setactiveCategory("all")}
                 whileHover={{ y: -3 }}
@@ -97,32 +101,60 @@ export default function DailyBestSells() {
                 <h1>All</h1>
               </motion.li>
               <motion.li
-                onClick={() => setactiveCategory("milk")}
+                onClick={() => setactiveCategory("Dairy & Alternatives")}
                 whileHover={{ y: -3 }}
                 className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
               >
                 <h1>Dairy</h1>
               </motion.li>
               <motion.li
-                onClick={() => setactiveCategory("chicken")}
+                onClick={() => setactiveCategory("Meat")}
                 whileHover={{ y: -3 }}
                 className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
               >
-                <h1>Chicken</h1>
+                <h1>Chicken & Meat</h1>
               </motion.li>
               <motion.li
-                onClick={() => setactiveCategory("fruits")}
+                onClick={() => setactiveCategory("Fruits")}
                 whileHover={{ y: -3 }}
                 className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
               >
                 <h1>Fruits</h1>
               </motion.li>
               <motion.li
-                onClick={() => setactiveCategory("vegetables")}
+                onClick={() => setactiveCategory("Vegetables")}
                 whileHover={{ y: -3 }}
                 className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
               >
                 <h1>Vegetables</h1>
+              </motion.li>
+              <motion.li
+                onClick={() => setactiveCategory("Herbs")}
+                whileHover={{ y: -3 }}
+                className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
+              >
+                <h1>Herbs</h1>
+              </motion.li>
+              <motion.li
+                onClick={() => setactiveCategory("Breakfast Foods")}
+                whileHover={{ y: -3 }}
+                className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
+              >
+                <h1>Breakfast Foods</h1>
+              </motion.li>
+              <motion.li
+                onClick={() => setactiveCategory("Snacks")}
+                whileHover={{ y: -3 }}
+                className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
+              >
+                <h1>Snacks</h1>
+              </motion.li>
+              <motion.li
+                onClick={() => setactiveCategory("Beverages")}
+                whileHover={{ y: -3 }}
+                className="cursor-pointer hover:text-green-500 transition-all duration-75 ease-in-out"
+              >
+                <h1>Beverages</h1>
               </motion.li>
             </ul>
           </div>

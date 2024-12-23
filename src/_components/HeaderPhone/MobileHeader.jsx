@@ -29,7 +29,7 @@ export default function MobileHeader() {
 
   return (
     <>
-      <div className="lg:hidden absolute p-2 top-0 left-0 right-0 bg-white z-50 shadow-md">
+      <div className="lg:hidden absolute p-2 top-14 left-0 right-0 bg-white z-50 shadow-md">
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo photo */}
           <Link className=" flex items-center gap-2 " href="/">

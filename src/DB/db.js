@@ -1,17 +1,18 @@
 import { CiLock, CiMapPin, CiSettings, CiUser } from "react-icons/ci";
-import { FaBell, FaHeart, FaTag, FaUsers } from "react-icons/fa";
+import { FaBell, FaHeart, FaPlus, FaTag, FaUsers } from "react-icons/fa";
 import { LuPackage } from "react-icons/lu";
 import { RiBuilding2Fill } from "react-icons/ri";
+import { TbLayoutGridAdd } from "react-icons/tb";
 
 export const CatagoryData = [
   { id: 1, name: "Fruits", icon: "🍊", link: "fruits" },
   { id: 2, name: "Vegetables", icon: "🥦", link: "vegetables" },
-  { id: 3, name: "Milk", icon: "🥛", link: "milk" },
-  { id: 4, name: "Bakery", icon: "🥖", link: "bakery" },
-  { id: 5, name: "Personal-Care", icon: "🧴", link: "personalcare" },
-  { id: 6, name: "Grains", icon: "🌾", link: "grains" },
-  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "chicken" },
-  { id: 7, name: "Juice", icon: "🥤", link: "juice" },
+  { id: 3, name: "Milk", icon: "🥛", link: "Dairy" },
+  { id: 4, name: "Bakery", icon: "🥖", link: "Breakfast" },
+  { id: 5, name: "Personal-Care", icon: "🧴", link: "personal-care" },
+  { id: 6, name: "Grains", icon: "🌾", link: "Herbs" },
+  { id: 7, name: "Chicken & Egg", icon: "🍗", link: "Meat" },
+  { id: 7, name: "Juice", icon: "🥤", link: "Beverages" },
 ];
 
 export const PopProducts = [
@@ -106,18 +107,21 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1667049292983-d2524dd0ef08?q=80&w=1749&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Red Delicious", "Granny Smith", "Fuji"],
+      link: "Fruits"
     },
     {
       name: "Bananas",
       image:
         "https://plus.unsplash.com/premium_photo-1724250081102-cab0e5cb314c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Cavendish", "Plantain", "Red Banana"],
+      link: "Fruits"
     },
     {
       name: "Berries",
       image:
         "https://images.unsplash.com/photo-1613082410785-22292e8426e7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Strawberries", "Blueberries", "Raspberries"],
+      link: "Fruits"
     },
   ],
   Vegetables: [
@@ -126,18 +130,21 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1705056545505-942aff49cd9e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Spinach", "Kale", "Lettuce"],
+      link: "Vegetables"
     },
     {
       name: "Root Vegetables",
       image:
         "https://images.unsplash.com/photo-1635450672547-bf600c193d3d?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Carrots", "Potatoes", "Beets"],
+      link: "Vegetables"
     },
     {
       name: "Cruciferous",
       image:
         "https://images.unsplash.com/photo-1598030343246-eec71cb44231?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Broccoli", "Cauliflower", "Cabbage"],
+      link: "Vegetables"
     },
   ],
   Milk: [
@@ -146,12 +153,14 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1682129071833-65eed17bcf11?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Whole Milk", "Skim Milk", "2% Milk"],
+      link: "Dairy"
     },
     {
       name: "Plant-Based Milk",
       image:
         "https://plus.unsplash.com/premium_photo-1664647903702-8ffc5bdea812?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Almond Milk", "Soy Milk", "Oat Milk"],
+      link: "Dairy"
     },
   ],
   Bakery: [
@@ -160,12 +169,14 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1675788939191-713c2abf3da6?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["White Bread", "Wheat Bread", "Sourdough"],
+      link: "Breakfast Foods"
     },
     {
       name: "Pastries",
       image:
         "https://plus.unsplash.com/premium_photo-1669253517254-3a5ce28cfb25?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Croissants", "Muffins", "Danish"],
+      link: "Breakfast Foods"
     },
   ],
   "Personal-Care": [
@@ -174,18 +185,21 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1682096423780-41ca1b04af68?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Face Wash", "Moisturizer", "Sunscreen"],
+      link: "Personal-Care"
     },
     {
       name: "Hair Care",
       image:
         "https://images.unsplash.com/photo-1553148619-669d4311dd55?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Shampoo", "Conditioner", "Hair Oil"],
+      link: "Personal-Care"
     },
     {
       name: "Oral Care",
       image:
         "https://images.unsplash.com/photo-1593010997571-7ebe6c593d8e?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Toothpaste", "Toothbrush", "Mouthwash"],
+      link: "Personal-Care"
     },
   ],
   Grains: [
@@ -194,18 +208,21 @@ export const mockCategories = {
       image:
         "https://plus.unsplash.com/premium_photo-1705338026411-00639520a438?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Basmati", "Brown Rice", "Jasmine"],
+      link: "Herbs"
     },
     {
       name: "Wheat",
       image:
         "https://images.unsplash.com/photo-1600626337876-9cda4528ec74?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Whole Wheat Flour", "Semolina", "Bulgur"],
+      link: "Herbs"
     },
     {
       name: "Oats",
       image:
         "https://images.unsplash.com/photo-1590080876351-941da357bde6?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Rolled Oats", "Steel-Cut Oats", "Oatmeal"],
+      link: "Herbs"
     },
   ],
   "Chicken & Egg": [
@@ -214,12 +231,14 @@ export const mockCategories = {
       image:
         "https://images.unsplash.com/photo-1462027076063-1ceabb252dbd?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Chicken Breast", "Chicken Thighs", "Whole Chicken"],
+      link: "Meat"
     },
     {
       name: "Eggs",
       image:
         "https://images.unsplash.com/photo-1477506410535-f12fe9af97cc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Chicken Eggs", "Duck Eggs", "Quail Eggs"],
+      link: "Meat"
     },
   ],
   Juice: [
@@ -228,12 +247,14 @@ export const mockCategories = {
       image:
         "https://images.unsplash.com/photo-1619241638225-14d56e47ae64?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Orange Juice", "Apple Juice", "Mango Juice"],
+      link: "Beverages"
     },
     {
       name: "Vegetable Juice",
       image:
         "https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?q=80&w=1885&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       items: ["Carrot Juice", "Beetroot Juice", "Tomato Juice"],
+      link: "Beverages"
     },
   ],
 };
@@ -533,4 +554,20 @@ export const fixedCards = [
     image: "/images/banner-3.png",
     link: "fruits",
   },
+];
+
+
+export const navigation = [
+  { name: 'Products', icon: TbLayoutGridAdd },
+  { name: 'Add Product', icon: FaPlus },
+];
+export const categories = [
+  'Fruits & Vegetables',
+  'Meat & Seafood',
+  'Dairy & Eggs',
+  'Bakery',
+  'Pantry',
+  'Beverages',
+  'Snacks',
+  'Frozen Foods',
 ];

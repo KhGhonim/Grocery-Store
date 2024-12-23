@@ -1,9 +1,12 @@
 "use client";
-
-import Image from "next/image";
-import { useState } from "react";
+import { navigation } from "DB/db";
+import { notFound, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminProducts from "./AdminProducts";
+import AddProduct from "./AddProduct";
+import { FaSpinner } from "react-icons/fa";
 
 export default function AdminDashboard() {
   const [name, setname] = useState(null);
@@ -12,7 +15,7 @@ export default function AdminDashboard() {
   const [catagory, setcatagory] = useState(null);
   const [image, setimage] = useState(null);
   const [loading, setloading] = useState(false);
-
+  const [activeTab, setactiveTab] = useState("Products");
   const HandleSubmit = async (eo) => {
     eo.preventDefault();
     setloading(true);
@@ -46,178 +49,89 @@ export default function AdminDashboard() {
     setloading(false);
   };
 
+  const handleEdit = (product) => {
+    console.log("Edit product:", product);
+    // Implement edit functionality
+  };
+
+  const handleDelete = (productId) => {
+    console.log("Delete product:", productId);
+    // Implement delete functionality
+  };
+
+  const [arrData, setstate] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      setloading(true);
+      const res = await fetch("api/getProducts", {
+        cache: "no-cache",
+        next: { revalidate: 0 },
+      });
+
+      if (!res.ok) {
+        notFound();
+      }
+
+      const data = await res.json();
+      setstate(data);
+    };
+
+    getData();
+    setloading(false);
+  }, []);
+
   return (
-    <div className="  h-full ">
-      <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-        <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold sm:text-3xl">
-              Let's add some new Products into Our inventory today!
-            </h1>
-
-            <p className="mt-4 text-gray-500">
-              Please note that your need add other products to your inventory
-            </p>
-          </div>
-
-          <form
-            action="#"
-            className="mx-auto mb-0 mt-8 max-w-md space-y-4"
-            onSubmit={HandleSubmit}
-          >
-            <div>
-              <label htmlFor="name" className="sr-only">
-                name
-              </label>
-
-              <div className="relative">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none"
-                  placeholder="Enter Name of the Product"
-                  onChange={(eo) => {
-                    setname(eo.target.value);
-                  }}
-                  required
-                />
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <Image
-                    src={"/admin/id-card.png"}
-                    alt={"id-card.png"}
-                    width={25}
-                    height={25}
-                  />
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="name" className="sr-only">
-                catagory
-              </label>
-
-              <div className="relative">
-                <input
-                  type="text"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none"
-                  placeholder="Enter Name of the Catagory"
-                  onChange={(eo) => {
-                    setcatagory(eo.target.value.toLowerCase());
-                  }}
-                  required
-                />
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <Image
-                    src={"/admin/tag.png"}
-                    alt={"id-card.png"}
-                    width={25}
-                    height={25}
-                  />
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="price" className="sr-only">
-                price
-              </label>
-
-              <div className="relative">
-                <input
-                  type="number"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none"
-                  placeholder="Enter the Price of the Product"
-                  onChange={(eo) => {
-                    setprice(eo.target.value);
-                  }}
-                  required
-                />
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <Image
-                    src={"/admin/label.png"}
-                    alt={"id-card.png"}
-                    width={25}
-                    height={25}
-                  />
-                </span>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="Fake price" className="sr-only">
-                Fake price
-              </label>
-
-              <div className="relative">
-                <input
-                  type="number"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none"
-                  placeholder="Enter the Price of the Product"
-                  onChange={(eo) => {
-                    setFakeprice(eo.target.value);
-                  }}
-                  required
-                />
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <Image
-                    src={"/admin/sale.png"}
-                    alt={"sale.png"}
-                    width={25}
-                    height={25}
-                  />
-                </span>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="image" className="sr-only">
-                image
-              </label>
-
-              <div className="relative">
-                <input
-                  type="file"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm "
-                  placeholder="Enter the Price of the Product"
-                  onChange={(eo) => {
-                    setimage(eo.target.files[0]);
-                  }}
-                  required
-                />
-
-                <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <Image
-                    src={"/admin/picture.png"}
-                    alt={"picture.png"}
-                    width={25}
-                    height={25}
-                  />
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center p-3">
-              <button
-                type="submit"
-                className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-              >
-                {loading ? "Loading..." : "Add Product"}
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div className="hidden md:block relative h-72 w-full sm:h-96 lg:h-full lg:w-1/2">
-          <img
-            alt=""
-            src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
-      </section>
+    <nav className="bg-white shadow-sm">
       <ToastContainer />
-    </div>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 justify-between">
+          <div className="flex">
+            <div className="flex flex-shrink-0 items-center">
+              <span className="text-xl font-bold text-gray-900">
+                Admin Dashboard
+              </span>
+            </div>
+            <div className="ml-6 flex space-x-8">
+              {navigation.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.name}
+                    className={`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium ${
+                      activeTab === item.name
+                        ? "border-indigo-500 text-gray-900"
+                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    }`}
+                    onClick={() => setactiveTab(item.name)}
+                  >
+                    <Icon className="mr-2 h-4 w-4" />
+                    {item.name}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main >
+          {activeTab === "Products" ? (
+            loading ? (
+              <div className="flex w-full h-full items-center justify-center">
+                <FaSpinner className="animate-spin" />
+              </div>
+            ) : (
+              <AdminProducts
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                products={arrData}
+              />
+            )
+          ) : null}
+          {activeTab === "Add Product" && <AddProduct />}
+      </main>
+    </nav>
   );
 }

@@ -28,8 +28,9 @@ export default function page() {
       const filteredData = data.filter((item) => {
         const searchLower = search.toLowerCase();
         return (
-          item.catagory.toLowerCase() === searchLower ||
-          item.name.toLowerCase().includes(searchLower)
+          item.category.toLowerCase() === searchLower ||
+          item.name.toLowerCase().includes(searchLower) ||
+          item.category.toLowerCase().includes(searchLower)
         );
       });
       setData(filteredData);
@@ -41,8 +42,8 @@ export default function page() {
   if (!Data || Data.length === 0) {
     return (
       <section className="bg-white dark:bg-gray-900">
-      <MobileHeader />
-      <DesktopHeader />
+        <MobileHeader />
+        <DesktopHeader />
         <div className="container px-6 py-10 mx-auto animate-pulse">
           <h1 className="w-48 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700"></h1>
 
@@ -79,7 +80,6 @@ export default function page() {
 
   return (
     <>
-
       <div className="flex justify-around flex-wrap max-sm:items-center gap-2 h-full mb-5">
         {Data.map((item) => {
           return (

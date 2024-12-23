@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { mockCategories } from "../../../DB/db";
 import { RiCustomerService2Fill } from "react-icons/ri";
+import Link from "next/link";
 
 export default function HeaderThree() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -46,7 +47,7 @@ export default function HeaderThree() {
                 <div className="absolute top-full left-0 w-[500px] bg-white shadow-lg rounded-lg p-6 z-50">
                   <div className="grid grid-cols-3 gap-6">
                     {mockCategories[category].map((section, index) => (
-                      <div key={index} className="space-y-4">
+                      <Link key={index} className="space-y-4" href={`Search?q=${section?.link.toLowerCase()}`}>
                         <img
                           src={section?.image}
                           alt={section?.name}
@@ -65,7 +66,7 @@ export default function HeaderThree() {
                             </li>
                           ))}
                         </ul>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

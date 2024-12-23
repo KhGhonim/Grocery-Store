@@ -8,6 +8,7 @@ import ProductGrid from "_components/Client/ProductGrid/ProductGrid";
 import Footer from "_components/Footer";
 import DesktopHeader from "_components/HeaderDesktop/DesktopHeader";
 import MobileHeader from "_components/HeaderPhone/MobileHeader";
+import PhoneAd from "_components/HeaderPhone/PhoneAd";
 import Products from "_components/Products";
 import WelcomeModal from "_components/WelcomeModal/WelcomeModal";
 
@@ -21,7 +22,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-x-hidden">
+      <PhoneAd />
       <MobileHeader />
       <DesktopHeader />
       <HearoSeaction />
@@ -30,12 +32,12 @@ export default function Home() {
         <Catagory />
         <Products />
         <FixedCards />
-        <DailyBestSells />
       </div>
+      <DailyBestSells />
       <ProductGrid />
       <Banner />
       <Footer />
       <WelcomeModal />
-    </>
+    </div>
   );
 }
