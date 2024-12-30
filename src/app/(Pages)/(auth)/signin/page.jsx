@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { FaSpinner } from "react-icons/fa";
 
 export default function page() {
   const [email, setemail] = useState(null);
@@ -69,7 +70,10 @@ export default function page() {
                 If you want to try our Admin Panel try our Admin Email{" "}
                 <p className=" text-red-400">Email: admin@admin.com</p>{" "}
                 <p className=" text-red-400">Pw:123</p>
-                or <p className="text-green-400">Make your own Account and be visitor</p>
+                or{" "}
+                <p className="text-green-400">
+                  Make your own Account and be visitor
+                </p>
               </h1>
 
               <form action="#" className="mt-8 grid grid-cols-6 gap-6">
@@ -121,22 +125,11 @@ export default function page() {
                     className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                   >
                     {isLoading ? (
-                      <div className="lds-default">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                      <div className="flex w-full h-full items-center justify-center">
+                        <FaSpinner className="animate-spin" />
                       </div>
                     ) : (
-                      "    Sign In"
+                      "Sign In"
                     )}
                   </button>
 
