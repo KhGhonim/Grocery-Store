@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const getInitialSelectedProducts = () => {
+const getInitialProducts = (key) => {
   if (typeof window !== "undefined") {
-    const savedProducts = localStorage.getItem("SelectedProducts");
+    const savedProducts = localStorage.getItem(key);
     return savedProducts ? JSON.parse(savedProducts) : [];
   }
   return [];
 };
 
 const initialState = {
-  SelectedProducts: getInitialSelectedProducts(),
+  SelectedProducts: getInitialProducts("SelectedProducts"),
+  WishListProducts: getInitialProducts("WishListProducts"),
+  CompareProducts: getInitialProducts("CompareProducts"),
 };
 
 export const cartSlice = createSlice({
@@ -68,9 +70,6 @@ export const cartSlice = createSlice({
       const NewProductArryForFavori = state.SelectedProducts.filter((item) => {
         return item.name !== action.payload.name;
       });
-
-      console.log(NewProductArryForFavori);
-
       state.SelectedProducts = NewProductArryForFavori;
 
       localStorage.setItem(
@@ -78,10 +77,61 @@ export const cartSlice = createSlice({
         JSON.stringify(state.SelectedProducts)
       );
     },
+
+    AddToWhitList: (state, action) => {
+      const AddNewWishList = [...state.WishListProducts, action.payload]
+      const WishListProducts = state.WishListProducts.includes(action.payload) ? state.WishListProducts : AddNewWishList
+      state.WishListProducts = WishListProducts
+      localStorage.setItem("WishListProducts", JSON.stringify(state.WishListProducts))
+    },
+
+    WhisListRemover: (state, action) => {
+      const NewProductArryForFavori = state.WishListProducts.filter((item) => {
+        return item.name !== action.payload.name;
+      });
+
+      state.WishListProducts = NewProductArryForFavori;
+
+      localStorage.setItem(
+        "WishListProducts",
+        JSON.stringify(state.WishListProducts)
+      );
+    },
+
+    AddToCompare: (state, action) => {
+      const existingProductIndex = state.CompareProducts.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingProductIndex !== -1) {
+        state.CompareProducts[existingProductIndex].quantity += 1;
+      } else if (state.CompareProducts.length < 3) {
+        const newProduct = { ...action.payload, quantity: 1 };
+        state.CompareProducts.push(newProduct);
+      }
+
+      localStorage.setItem("CompareProducts", JSON.stringify(state.CompareProducts));
+    },
+
+
+    RemoveFromCompare: (state, action) => {
+      const NewProductAfterRemove = state.CompareProducts.filter((item) => {
+        return item.id !== action.payload.id;
+      });
+      state.CompareProducts = NewProductAfterRemove;
+
+      localStorage.setItem(
+        "CompareProducts",
+        JSON.stringify(state.CompareProducts)
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { AddToCart, increment, decrement, Remover } = cartSlice.actions;
+export const { AddToCart, increment, decrement, Remover, AddToWhitList, WhisListRemover, RemoveFromCompare, AddToCompare } = cartSlice.actions;
 
 export default cartSlice.reducer;
+
+
+

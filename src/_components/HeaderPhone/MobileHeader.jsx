@@ -7,11 +7,12 @@ import MobileDrawer from "./MobileDrawer";
 import Image from "next/image";
 import Link from "next/link";
 import PhoneNavbar from "./PhoneNavbar";
+import { usePathname } from "next/navigation";
 
 export default function MobileHeader() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   const [isHidden, setIsHidden] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,11 @@ export default function MobileHeader() {
 
   return (
     <>
-      <div className="lg:hidden absolute p-2 top-14 left-0 right-0 bg-white z-50 shadow-md">
+      <div
+        className={`lg:hidden absolute p-2 ${
+          pathname === "/" ? "top-14" : "top-0"
+        } left-0 right-0 bg-white z-50 shadow-md`}
+      >
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo photo */}
           <Link className=" flex items-center gap-2 " href="/">

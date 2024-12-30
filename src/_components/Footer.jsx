@@ -304,7 +304,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-16 border-t border-gray-100 pt-8">
+          <div className="mt-16 border-t border-gray-100 pb-10 lg:py-8">
             <p className="text-center text-xs/relaxed text-gray-500">
               © Company 2024. All rights reserved.
               <br />

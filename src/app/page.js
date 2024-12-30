@@ -1,4 +1,4 @@
-import Banner from "../../src/_components/Banner";
+import Banner from "../_components/Banners/Banner";
 import Catagory from "../../src/_components/Catagory";
 import DailyBestSells from "../../src/_components/Client/DailyBestSells/DailyBestSells";
 import DealsOfTheDay from "../../src/_components/Client/DealsOfTheDay/DealsOfTheDay";

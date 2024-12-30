@@ -163,7 +163,7 @@ export const mockCategories = {
       link: "Dairy"
     },
   ],
-  Bakery: [
+  Breakfast: [
     {
       name: "Breads",
       image:
@@ -225,7 +225,7 @@ export const mockCategories = {
       link: "Herbs"
     },
   ],
-  "Chicken & Egg": [
+  "Meat": [
     {
       name: "Chicken",
       image:
@@ -241,7 +241,7 @@ export const mockCategories = {
       link: "Meat"
     },
   ],
-  Juice: [
+  Beverages: [
     {
       name: "Fruit Juice",
       image:

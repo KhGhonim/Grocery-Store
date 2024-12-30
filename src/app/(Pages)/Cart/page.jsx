@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 import { MdFavoriteBorder } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
-import Banner from "_components/Banner";
+import Banner from "_components/Banners/Banner";
 import Footer from "_components/Footer";
 import { PopProducts } from "../../../DB/db";
 import { decrement, increment, Remover } from "../../../Redux/services/CartSlice";

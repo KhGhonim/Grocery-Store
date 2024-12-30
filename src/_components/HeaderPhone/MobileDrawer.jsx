@@ -118,29 +118,18 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
                 {
                   label: "Home",
                   items: [],
+                  link: "/",
                 },
                 {
-                  label: "Shop",
-                  items: ["Shop Grid", "Shop List", "Shop Single"],
+                  label: "Admin",
+                  items: ["Shop List", "Add Product", "Orders"],
                 },
-                {
-                  label: "Vendors",
-                  items: [
-                    "Dashboard",
-                    "Store Listing",
-                    "Store Details",
-                    "My Orders",
-                  ],
-                },
-                {
-                  label: "Blog",
-                  items: ["Blog Grid", "Blog List", "Blog Single"],
-                },
+
                 {
                   label: "Pages",
                   items: [
                     "About Us",
-                    "Contact",
+                    "Privacy Policy",
                     "Login",
                     "Register",
                     "Forgot Password",

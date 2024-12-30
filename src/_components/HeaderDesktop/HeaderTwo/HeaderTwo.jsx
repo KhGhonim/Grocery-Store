@@ -54,8 +54,10 @@ export default function navbar() {
     };
   }, []);
 
-  // @ts-ignore
-  const { SelectedProducts } = useSelector((state) => state.carttt);
+  const { SelectedProducts, WishListProducts, CompareProducts } = useSelector(
+    // @ts-ignore
+    (state) => state.carttt
+  );
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -133,7 +135,8 @@ export default function navbar() {
                             className="text-gray-500 hover:text-white hover:!bg-green-600 rounded-full p-2"
                           >
                             <Link
-                              href={`/ProductCatagory/${item.link}`}
+                              href={`/ProductCatagory/${item.link.toLocaleLowerCase()}`}
+                              target="_blank"
                               className="flex justify-evenly items-center gap-5 w-max cursor-pointer"
                             >
                               <span>{item.icon}</span>
@@ -181,7 +184,7 @@ export default function navbar() {
                 >
                   <div className="relative">
                     <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      0
+                      {WishListProducts.length}
                     </span>
                     <IoMdHeartEmpty size={30} />
                   </div>{" "}
@@ -198,7 +201,7 @@ export default function navbar() {
                 >
                   <div className="relative">
                     <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                    {SelectedProducts.length}
+                      {SelectedProducts.length}
                     </span>
                     <CiShoppingCart size={30} />
                   </div>{" "}
@@ -215,7 +218,7 @@ export default function navbar() {
                 >
                   <div className="relative">
                     <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      0
+                      {CompareProducts.length}
                     </span>
                     <IoIosGitCompare size={30} />
                   </div>{" "}

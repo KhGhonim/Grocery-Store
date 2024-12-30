@@ -7,6 +7,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import DesktopHeader from "_components/HeaderDesktop/DesktopHeader";
 import MobileHeader from "_components/HeaderPhone/MobileHeader";
 import Footer from "_components/Footer";
+import BannerTwo from "_components/Banners/BannerTwo";
 
 export default function page() {
   const searchParams = useSearchParams();
@@ -41,7 +42,7 @@ export default function page() {
 
   if (!Data || Data.length === 0) {
     return (
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900 max-lg:mt:24">
         <MobileHeader />
         <DesktopHeader />
         <div className="container px-6 py-10 mx-auto animate-pulse">
@@ -80,7 +81,9 @@ export default function page() {
 
   return (
     <>
-      <div className="flex justify-around flex-wrap max-sm:items-center gap-2 h-full mb-5">
+      <DesktopHeader />
+      <MobileHeader />
+      <div className="flex justify-around flex-wrap max-sm:items-center gap-2 h-full max-lg:mt-24 mb-5">
         {Data.map((item) => {
           return (
             <div
@@ -116,6 +119,7 @@ export default function page() {
           );
         })}
       </div>
+      <BannerTwo />
       <Footer />
     </>
   );

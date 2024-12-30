@@ -5,7 +5,11 @@ import { FaEye, FaHeart } from "react-icons/fa6";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch } from "react-redux";
-import { AddToCart } from "../../../Redux/services/CartSlice";
+import {
+  AddToCart,
+  AddToCompare,
+  AddToWhitList,
+} from "../../../Redux/services/CartSlice";
 import { toast } from "react-toastify";
 import ProductDetailsModal from "../../ProductDetailsModal/ProductDetailsModal";
 import Image from "next/image";
@@ -18,6 +22,15 @@ export default function DBSCrousel({ product }) {
   const CartHandler = (product) => {
     dispatch(AddToCart(product));
     toast.success("Product added to cart");
+  };
+  const HandleWhishList = (product) => {
+    dispatch(AddToWhitList(product));
+    toast.success("Product added to WhishList");
+  };
+
+  const AddToCompareHandler = (product) => {
+    dispatch(AddToCompare(product));
+    toast.success("Product added to Compare");
   };
 
   const handleHoveringItem = (item) => {
@@ -82,7 +95,6 @@ export default function DBSCrousel({ product }) {
               )}
               {/* Product Image */}
               <div className="relative h-60 overflow-hidden">
-
                 <Image
                   width={900}
                   height={900}
@@ -106,10 +118,13 @@ export default function DBSCrousel({ product }) {
                   >
                     <FaEye size={20} />
                   </button>
-                  <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
+                  <button
+                    onClick={() => HandleWhishList(item)}
+                    className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors"
+                  >
                     <FaHeart size={20} />
                   </button>
-                  <button className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
+                  <button onClick={() => AddToCompareHandler(item)} className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
                     <FiBarChart size={20} />
                   </button>
                 </div>
@@ -140,7 +155,7 @@ export default function DBSCrousel({ product }) {
 
                 {/* Stock */}
                 <div className="text-sm text-gray-400 my-2">
-                In the Stock: {item.stock}
+                  In the Stock: {item.stock}
                 </div>
 
                 {/* Price */}

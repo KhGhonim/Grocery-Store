@@ -1,9 +1,13 @@
+"use client";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import Language from "../../Language/Language";
 import DarkAndLightMode from "../../DarkAndLightMode/DarkAndLightMode";
+import { useSession } from "next-auth/react";
 
 export default function HeaderOne() {
+  const { data: session, status } = useSession();
+
   return (
     <div className="hidden lg:flex bg-gray-100 py-2  items-center justify-between px-4 relative">
       <div className=" px-4 w-full flex justify-between items-center text-xs">
@@ -11,15 +15,24 @@ export default function HeaderOne() {
           <Link href="/AboutUs" className="hover:text-green-600">
             About Us
           </Link>
-          <Link href="/Profile" className="hover:text-green-600">
-            My Account
-          </Link>
-          <Link href="/Wishlist" className="hover:text-green-600">
-            Wishlist
-          </Link>
-          <Link href="/OrderTracking" className="hover:text-green-600">
-            Order Tracking
-          </Link>
+          {status === "unauthenticated" && (
+            <Link href="/Privacy" className="hover:text-green-600">
+              Privacy & Terms Policy
+            </Link>
+          )}
+          {status === "authenticated" && (
+            <div className="flex gap-4">
+              <Link href="/Profile" className="hover:text-green-600">
+                My Account
+              </Link>
+              <Link href="/Wishlist" className="hover:text-green-600">
+                Wishlist
+              </Link>
+              <Link href="/OrderTracking" className="hover:text-green-600">
+                Order Tracking
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className="flex mx-6 gap-4 flex-1 w-1/2  ">
