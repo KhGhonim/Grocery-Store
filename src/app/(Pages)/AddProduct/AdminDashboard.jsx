@@ -6,9 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminProducts from "./AdminProducts";
 import AddProduct from "./AddProduct";
 import { FaSpinner } from "react-icons/fa";
-import useFetchProducts from "../../../app/Hooks/useFetchProducts";
+import useFetchProducts from "../../../Hooks/useFetchProducts";
 import DeleteModel from "_components/Models/DeleteModel";
-import useDeleteProoduct from "../../../app/Hooks/useDeleteProoduct";
+import useDeleteProoduct from "../../../Hooks/useDeleteProoduct";
 import EditModel from "_components/Models/EditModel";
 import useSubmitUpdatingProduct from "../../../Hooks/useSubmitUpdatingProduct";
 

@@ -14,7 +14,7 @@ const useDeleteProoduct = () => {
     try {
 
       setIsloading(true);
-      const res = await fetch(`api/deleteProduct?id=${product._id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_DELETE_PRODUCT_URL}?id=${product._id}`, {
         method: "DELETE",
       });
 

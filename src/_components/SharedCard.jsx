@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { AddToCart } from "../Redux/services/CartSlice";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { toast } from "react-toastify";
-import useFetchProducts from "../app/Hooks/useFetchProducts";
+import useFetchProducts from "../Hooks/useFetchProducts";
 
 export default function SharedCard() {
   const { data, loading } = useFetchProducts();

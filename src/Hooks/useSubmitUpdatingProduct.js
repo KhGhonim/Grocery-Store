@@ -26,7 +26,7 @@ const useSubmitUpdatingProduct = (SelectItemToEdit) => {
       QueryParms.append("price", form.price);
 
       setIsLoading(true);
-      const res = await fetch(`api/updateProduct?${QueryParms}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_UPDATE_PRODUCT_URL}?${QueryParms}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

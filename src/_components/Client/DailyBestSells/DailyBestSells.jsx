@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import DBSCrousel from "./DBSCrousel";
 import Loading from "../../../app/loading";
-import useFetchProducts from "../../../app/Hooks/useFetchProducts";
+import useFetchProducts from "../../../Hooks/useFetchProducts";
 
 export default function DailyBestSells() {
   const [activeCategory, setactiveCategory] = useState("all");

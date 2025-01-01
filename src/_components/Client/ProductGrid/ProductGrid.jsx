@@ -1,6 +1,6 @@
 "use client";
 import ProductCard from "./ProductCard";
-import useFetchProducts from "../../../app/Hooks/useFetchProducts";
+import useFetchProducts from "../../../Hooks/useFetchProducts";
 import { FaSpinner } from "react-icons/fa";
 
 export default function ProductGrid() {
