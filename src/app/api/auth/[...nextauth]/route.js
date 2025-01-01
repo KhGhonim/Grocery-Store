@@ -25,7 +25,11 @@ export const authOptions = {
           );
 
           if (match) {
-            return user;
+            return {
+              id: user._id,
+              email: user.email,
+              name: user.fristname,
+            };
           } else {
             return null;
           }
@@ -40,6 +44,31 @@ export const authOptions = {
   pages: {
     signIn: "/signin",
   },
+
+  callbacks: {
+    async session({ session, token }) {
+      // Attach user information to the session object
+      if (token) {
+        session.user.email = token.email;
+        session.user.name = token.name;
+        session.user.id = token.id;
+      }
+      return session;
+    },
+
+    async jwt({ token, user }) {
+      // Add user information to token when user is authenticated 
+      if (user) {
+        token.email = user.email;
+        token.name = user.name;
+        token.id = user.id;
+      }
+      return token;
+    },
+
+  },
+
+
 };
 
 const handler = NextAuth(authOptions);

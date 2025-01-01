@@ -3,7 +3,7 @@ import { CatagoryData } from "../DB/db";
 
 export default function Catagory() {
   return (
-    <div className=" text-green-600 font-extrabold text-center w-full my-8 flex flex-col flex-wrap  ">
+    <div className=" text-green-600 bg-[--background-color] font-extrabold text-center w-full py-8 flex flex-col flex-wrap  ">
       <h1 className="">Shop by Catagory</h1>
       <div className="flex flex-wrap justify-between gap-2 items-center p-2">
         {CatagoryData.map((item) => {

@@ -21,7 +21,7 @@ export default function ProgressTimeline() {
             </div>
             <div className="ml-4 flex-1">
               <h3 className="font-semibold">{step.title}</h3>
-              <p className="text-sm text-gray-600">{step.date}</p>
+              <p className="text-sm text-[--text-color]">{step.date}</p>
             </div>
           </div>
         ))}

@@ -11,6 +11,7 @@ import MobileHeader from "../../src/_components/HeaderPhone/MobileHeader";
 import PhoneAd from "../../src/_components/HeaderPhone/PhoneAd";
 import Products from "../../src/_components/Products";
 import WelcomeModal from "../../src/_components/WelcomeModal/WelcomeModal";
+import ProductToast from "_components/ProductToast/ProductToast";
 
 
 export const metadata = {
@@ -23,12 +24,12 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-[--bg-color] relative text-[--text-color]">
       <PhoneAd />
       <MobileHeader />
       <DesktopHeader />
       <HearoSeaction />
-      <div className="px-5">
+      <div className="px-5 bg-[--bg-color]">
         <DealsOfTheDay />
         <Catagory />
         <Products />
@@ -39,6 +40,7 @@ export default function Home() {
       <Banner />
       <Footer />
       <WelcomeModal />
+      <ProductToast />
     </div>
   );
 }

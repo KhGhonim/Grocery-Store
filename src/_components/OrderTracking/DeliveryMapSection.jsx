@@ -3,7 +3,7 @@ import { TbNavigationCog } from "react-icons/tb";
 
 export default function DeliveryMapSection() {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 mt-8">
+    <div className="bg-[--background-color] text-[--text-color] rounded-lg shadow-lg p-6 mt-8">
       <h2 className="text-xl font-semibold mb-4">Delivery Route</h2>
       <div className="relative h-[300px] bg-gray-100 rounded-lg overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">

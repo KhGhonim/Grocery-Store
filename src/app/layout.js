@@ -18,7 +18,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden bg-[--background-color] text-[--text-color]`}>
         <Provider store={store}>
           <AuthProvider>{children}</AuthProvider>
         </Provider>

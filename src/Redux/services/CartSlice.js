@@ -79,9 +79,17 @@ export const cartSlice = createSlice({
     },
 
     AddToWhitList: (state, action) => {
+      const FindIfTheProductExtits = state.WishListProducts.findIndex((item) => {
+        return item.name === action.payload.name
+      })
+
+      if (FindIfTheProductExtits !== -1) {
+        return
+      }
+
+
       const AddNewWishList = [...state.WishListProducts, action.payload]
-      const WishListProducts = state.WishListProducts.includes(action.payload) ? state.WishListProducts : AddNewWishList
-      state.WishListProducts = WishListProducts
+      state.WishListProducts = AddNewWishList
       localStorage.setItem("WishListProducts", JSON.stringify(state.WishListProducts))
     },
 
@@ -108,6 +116,8 @@ export const cartSlice = createSlice({
       } else if (state.CompareProducts.length < 3) {
         const newProduct = { ...action.payload, quantity: 1 };
         state.CompareProducts.push(newProduct);
+      } else {
+
       }
 
       localStorage.setItem("CompareProducts", JSON.stringify(state.CompareProducts));

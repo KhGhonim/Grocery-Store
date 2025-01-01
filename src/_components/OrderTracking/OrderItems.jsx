@@ -1,9 +1,8 @@
-import React from 'react'
 import { orderStatus } from '../../DB/db'
 
 export default function OrderItems() {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="bg-[--background-color] text-[--text-color] rounded-lg shadow-lg p-6">
     <h2 className="text-xl font-semibold mb-4">Order Items</h2>
     <div className="space-y-4">
       {orderStatus.items.map((item) => (

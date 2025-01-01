@@ -42,10 +42,10 @@ export default function page() {
     <div className="w-full h-full">
       <DesktopHeader />
       <MobileHeader />
-      <div className="h-full bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="h-full bg-[--background-color] text-[--text-color] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold mb-4">
               Compare Products
             </h1>
             {CompareProducts.length === 0 && (
@@ -60,7 +60,7 @@ export default function page() {
               {CompareProducts.map((item) => (
                 <span
                   key={item.id}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
+                  className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[--background-color-2] text-[--text-color]"
                 >
                   {item.name}
                   <button

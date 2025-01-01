@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
   return (
     <motion.div
       whileHover={{ y: -3 }}
-      className="bg-white p-3 flex cursor-pointer transition-all duration-75 ease-in-out"
+      className="bg-[--background-color] text-[--text-color] p-3 flex cursor-pointer transition-all duration-75 ease-in-out"
     >
       <div className="w-1/3 h-full mr-3">
         <Image
@@ -20,7 +20,7 @@ export default function ProductCard({ product }) {
         />
       </div>
       <div className="flex-1 flex flex-col">
-        <h3 className="text-sm lg:text-lg font-bold text-gray-800 ">
+        <h3 className="text-sm lg:text-lg font-bold ">
           {product.name}
         </h3>
         <div className="flex items-center mt-2">

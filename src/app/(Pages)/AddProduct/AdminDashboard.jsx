@@ -1,90 +1,45 @@
 "use client";
 import { navigation } from "DB/db";
-import { notFound, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminProducts from "./AdminProducts";
 import AddProduct from "./AddProduct";
 import { FaSpinner } from "react-icons/fa";
+import useFetchProducts from "../../../app/Hooks/useFetchProducts";
+import DeleteModel from "_components/Models/DeleteModel";
+import useDeleteProoduct from "../../../app/Hooks/useDeleteProoduct";
+import EditModel from "_components/Models/EditModel";
+import useSubmitUpdatingProduct from "../../../Hooks/useSubmitUpdatingProduct";
 
 export default function AdminDashboard() {
-  const [name, setname] = useState(null);
-  const [price, setprice] = useState(null);
-  const [Fakeprice, setFakeprice] = useState(null);
-  const [catagory, setcatagory] = useState(null);
-  const [image, setimage] = useState(null);
-  const [loading, setloading] = useState(false);
   const [activeTab, setactiveTab] = useState("Products");
-  const HandleSubmit = async (eo) => {
-    eo.preventDefault();
-    setloading(true);
-
-    if (!name || !price || !Fakeprice || !image || !catagory) {
-      setloading(false);
-      return;
-    }
-
-    const formData = new FormData();
-    formData.set("name", name);
-    formData.set("price", price);
-    formData.set("Fakeprice", Fakeprice);
-    formData.set("image", image);
-    formData.set("catagory", catagory);
-
-    console.log(formData);
-
-    const response = await fetch("api/productsuploader", {
-      method: "POST",
-      body: formData,
-    });
-    console.log(response);
-
-    if (!response.ok) {
-      toast.warning("Prdoucts did not add product");
-    } else {
-      toast.success("Prdoucts added successfully");
-    }
-    eo.target.reset();
-    setloading(false);
-  };
+  const { data, loading } = useFetchProducts();
+  const [SelectedItemToDelete, setSelectedItemToDelete] = useState(null);
+  const [SelectItemToEdit, setSelectItemToEdit] = useState(null);
+  const [IsModeLOpened, setIsModeLOpened] = useState(false);
+  const { DeleteProoduct, Isloading } = useDeleteProoduct();
+  const {
+    SubmitUpdatingProduct,
+    IsLoading,
+    setform,
+    form,
+    IsEditModelOpened,
+    setIsEditModelOpened,
+  } = useSubmitUpdatingProduct(SelectItemToEdit);
 
   const handleEdit = (product) => {
-    console.log("Edit product:", product);
-    // Implement edit functionality
+    setIsEditModelOpened(true);
+    setSelectItemToEdit(product);
   };
-
-  const handleDelete = (productId) => {
-    console.log("Delete product:", productId);
-    // Implement delete functionality
+  const onClose = (eo) => {
+    eo.preventDefault();
+    setIsEditModelOpened(false);
   };
-
-  const [arrData, setstate] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      setloading(true);
-      const res = await fetch("api/getProducts", {
-        cache: "no-cache",
-        next: { revalidate: 0 },
-      });
-
-      if (!res.ok) {
-        notFound();
-      }
-
-      const data = await res.json();
-      setstate(data);
-    };
-
-    getData();
-    setloading(false);
-  }, []);
 
   return (
     <nav className="bg-white shadow-sm">
       <ToastContainer />
-
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">
@@ -94,12 +49,13 @@ export default function AdminDashboard() {
               </span>
             </div>
             <div className="ml-6 flex space-x-8">
-              {navigation.map((item) => {
+              {navigation.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div
-                    key={item.name}
-                    className={`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium ${
+                    key={`${item.name}-${index}`}
+                    id={item.name}
+                    className={`inline-flex cursor-pointer items-center border-b-2 px-1 pt-1 text-sm font-medium ${
                       activeTab === item.name
                         ? "border-indigo-500 text-gray-900"
                         : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
@@ -116,22 +72,43 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <main >
-          {activeTab === "Products" ? (
-            loading ? (
-              <div className="flex w-full h-full items-center justify-center">
-                <FaSpinner className="animate-spin" />
-              </div>
-            ) : (
-              <AdminProducts
-                onEdit={handleEdit}
-                onDelete={handleDelete}
-                products={arrData}
-              />
-            )
-          ) : null}
-          {activeTab === "Add Product" && <AddProduct />}
+      <main>
+        {activeTab === "Products" ? (
+          loading ? (
+            <div className="flex w-full h-screen items-center justify-center">
+              <FaSpinner className="animate-spin" />
+            </div>
+          ) : (
+            <AdminProducts
+              onEdit={handleEdit}
+              products={data}
+              setSelectedItemToDelete={setSelectedItemToDelete}
+              setIsModeLOpened={setIsModeLOpened}
+            />
+          )
+        ) : null}
+        {activeTab === "Add Product" && <AddProduct />}
       </main>
+
+      <DeleteModel
+        onClose={() => {
+          setIsModeLOpened(false);
+        }}
+        item={SelectedItemToDelete}
+        onDelete={DeleteProoduct}
+        IsModeLOpened={IsModeLOpened}
+        Isloading={Isloading}
+      />
+
+      <EditModel
+        IsEditModelOpened={IsEditModelOpened}
+        item={SelectItemToEdit}
+        onClose={onClose}
+        SubmitUpdatingProduct={SubmitUpdatingProduct}
+        setform={setform}
+        form={form}
+        IsLoading={IsLoading}
+      />
     </nav>
   );
 }

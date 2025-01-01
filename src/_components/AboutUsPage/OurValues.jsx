@@ -2,7 +2,7 @@ import { FaAward, FaLeaf } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 export default function OurValues() {
   return (
-    <div className="py-20 bg-slate-50 ">
+    <div className="py-20 bg-[--background-color-2] text-[--text-color] ">
     <div className="max-w-7xl mx-auto px-4">
       <h2 className="text-3xl font-bold text-center mb-16">Our Values</h2>
       <div className="grid md:grid-cols-3 gap-12">

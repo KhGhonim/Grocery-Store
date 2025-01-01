@@ -20,17 +20,17 @@ export default function ProductByCatagoryCard({ params }) {
 
       const data = await res.json();
       const fillteredData = data.filter((item) => {
-        return item.category.toLowerCase() === params ||
+        return (
+          item.category.toLowerCase() === params ||
           item.name.toLowerCase().includes(params) ||
-          item.category.toLowerCase().includes(params);
+          item.category.toLowerCase().includes(params)
+        );
       });
       setData(fillteredData);
     };
 
     getData();
   }, []);
-
-
 
   if (!Data || Data.length === 0) {
     return (
@@ -69,7 +69,7 @@ export default function ProductByCatagoryCard({ params }) {
   }
 
   return (
-    <div className="flex justify-around flex-wrap max-sm:items-center gap-2 h-full mb-5">
+    <div className="flex justify-around  flex-wrap max-sm:items-center gap-2 h-full mb-5">
       {Data.map((item) => {
         return (
           <div

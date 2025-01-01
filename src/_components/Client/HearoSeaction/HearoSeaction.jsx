@@ -7,8 +7,8 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function HearoSeaction() {
   return (
-    <div className="max-lg:pt-14">
-      <div className="w-screen h-full px-5 my-9  ">
+    <div className="max-lg:pt-14 bg-[--background-color]">
+      <div className="w-screen h-full px-5 py-9  ">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

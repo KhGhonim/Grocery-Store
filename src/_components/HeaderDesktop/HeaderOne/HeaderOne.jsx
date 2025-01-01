@@ -9,7 +9,7 @@ export default function HeaderOne() {
   const { data: session, status } = useSession();
 
   return (
-    <div className="hidden lg:flex bg-gray-100 py-2  items-center justify-between px-4 relative">
+    <div className="hidden lg:flex bg-[--background-color] py-2  items-center justify-between px-4 relative">
       <div className=" px-4 w-full flex justify-between items-center text-xs">
         <div className="flex gap-4">
           <Link href="/AboutUs" className="hover:text-green-600">
@@ -28,7 +28,7 @@ export default function HeaderOne() {
               <Link href="/Wishlist" className="hover:text-green-600">
                 Wishlist
               </Link>
-              <Link href="/OrderTracking" className="hover:text-green-600">
+              <Link href="/Ordertracking" className="hover:text-green-600">
                 Order Tracking
               </Link>
             </div>

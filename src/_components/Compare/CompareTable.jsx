@@ -5,16 +5,16 @@ export default function CompareTable({ items }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
-        <thead className="bg-gray-50">
+      <table className="min-w-full bg-[--background-color-2] text-[--text-color] rounded-lg overflow-hidden shadow-lg">
+        <thead className="bg-[--text-color]">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-[--background-color-2] uppercase tracking-wider">
               Features
             </th>
             {items.map((item) => (
               <th
                 key={item.id}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs text-[--background-color-2] font-medium uppercase tracking-wider"
               >
                 {item.name}
               </th>
@@ -23,13 +23,13 @@ export default function CompareTable({ items }) {
         </thead>
         <tbody className="divide-y divide-gray-200">
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap text-[--background-color-2] text-sm font-medium">
               Image
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap text-sm"
               >
                 <img
                   src={item.image}
@@ -40,62 +40,62 @@ export default function CompareTable({ items }) {
             ))}
           </tr>
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Description
             </td>
             {items.map((item) => (
-              <td key={item.id} className="px-6 py-4 text-sm text-gray-500">
+              <td key={item.id} className="px-6 py-4 text-sm">
                 {item.description}
               </td>
             ))}
           </tr>
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Price
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap  text-sm"
               >
                 ${item.price.toFixed(2)}
               </td>
             ))}
           </tr>
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Stock
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap  text-sm"
               >
                 {item.stock} units
               </td>
             ))}
           </tr>
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Category
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap  text-sm"
               >
                 {item.category}
               </td>
             ))}
           </tr>
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Rating
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap  text-sm"
               >
                 {item.rating}
               </td>
@@ -103,13 +103,13 @@ export default function CompareTable({ items }) {
           </tr>
 
           <tr>
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               Qantity
             </td>
             {items.map((item) => (
               <td
                 key={item.id}
-                className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                className="px-6 py-4 whitespace-nowrap  text-sm"
               >
                 {item?.quantity}
               </td>

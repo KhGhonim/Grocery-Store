@@ -10,10 +10,10 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white">
+      <footer className="bg-[--background-color] text-[--text-color]">
         <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-md text-center">
-            <strong className="block text-center text-xl font-bold text-gray-900 sm:text-3xl">
+            <strong className="block text-center text-xl font-bold text-[--text-color] sm:text-3xl">
               Want us to email you with the latest blockbuster grocery?
             </strong>
 
@@ -46,7 +46,7 @@ export default function Footer() {
                     onClick={notify}
                     disabled={state.submitting}
                     type="submit"
-                    className="absolute end-1 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-blue-600 px-6 py-4 text-sm font-medium text-white transition hover:bg-blue-700"
                   >
                     Subscribe
                   </button>
@@ -66,7 +66,7 @@ export default function Footer() {
 
               <div className="mt-6 flex justify-center gap-4 lg:justify-start">
                 <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
+                  className="text-[--text-color] transition hover:text-[--text-color]/75"
                   href="#"
                   target="_blank"
                   rel="noreferrer"
@@ -88,7 +88,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
+                  className="text-[--text-color] transition hover:text-[--text-color]/75"
                   href="#"
                   target="_blank"
                   rel="noreferrer"
@@ -110,7 +110,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
+                  className="text-[--text-color] transition hover:text-[--text-color]/75"
                   href="#"
                   target="_blank"
                   rel="noreferrer"
@@ -128,7 +128,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
+                  className="text-[--text-color] transition hover:text-[--text-color]/75"
                   href="#"
                   target="_blank"
                   rel="noreferrer"
@@ -150,7 +150,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
+                  className="text-[--text-color] transition hover:text-[--text-color]/75"
                   href="#"
                   target="_blank"
                   rel="noreferrer"
@@ -175,7 +175,7 @@ export default function Footer() {
 
             <div className="grid grid-cols-1 gap-8 text-center lg:grid-cols-3 lg:text-left">
               <div>
-                <strong className="font-medium text-gray-900">
+                <strong className="font-medium text-[--text-color]">
                   {" "}
                   Services{" "}
                 </strong>
@@ -183,7 +183,7 @@ export default function Footer() {
                 <ul className="mt-6 space-y-1">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -193,7 +193,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       Graphic Design
@@ -202,7 +202,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       App Development
@@ -211,7 +211,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       Web Development
@@ -221,12 +221,12 @@ export default function Footer() {
               </div>
 
               <div>
-                <strong className="font-medium text-gray-900"> About </strong>
+                <strong className="font-medium text-[--text-color]"> About </strong>
 
                 <ul className="mt-6 space-y-1">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -236,7 +236,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -246,7 +246,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -256,7 +256,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -267,12 +267,12 @@ export default function Footer() {
               </div>
 
               <div>
-                <strong className="font-medium text-gray-900"> Support </strong>
+                <strong className="font-medium text-[--text-color]"> Support </strong>
 
                 <ul className="mt-6 space-y-1">
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -282,7 +282,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}
@@ -292,7 +292,7 @@ export default function Footer() {
 
                   <li>
                     <a
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-[--text-color] transition hover:text-[--text-color]/75"
                       href="#"
                     >
                       {" "}

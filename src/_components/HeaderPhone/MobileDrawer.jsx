@@ -2,19 +2,19 @@
 
 import { useState, useRef, useEffect } from "react";
 import AccordionMenu from "./AccordionMenu";
-import { mockCategories } from "../../DB/db";
+import { DrawerCategories, DrawerHome } from "../../DB/db";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function MobileDrawer({ isOpen, onClose, isHidden }) {
   const [activeTab, setActiveTab] = useState("menu");
-
+  const [IsSearchOpened, setIsSearchOpened] = useState(false);
   const ref = useRef(null);
   const handleClickOutside = (event) => {
     // If the click is outside the modal, close it
     if (ref.current && !ref.current.contains(event.target)) {
       onClose();
+      setIsSearchOpened(false);
     }
   };
 
@@ -26,21 +26,14 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
   }, []);
 
   const [query, setquery] = useState(null);
-
-  const router = useRouter();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    router.replace(`/Search?q=${query}`);
-  };
-
+  
   return (
     <>
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden"
-          onClick={onClose}
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={handleClickOutside}
         />
       )}
 
@@ -48,10 +41,19 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
       <div
         ref={ref}
         className={`
-      fixed top-0 left-0 h-full w-[300px] bg-white z-50 p-2 transform transition-transform duration-300 lg:hidden
+      fixed top-0 left-0 h-full w-[300px] bg-white z-40 p-2  transform transition-transform duration-300 lg:hidden
       ${isOpen ? "translate-x-0" : "-translate-x-full"}
+      
     `}
       >
+        {IsSearchOpened && (
+          <div
+            onClick={() => {
+              setIsSearchOpened(false);
+            }}
+            className="fixed inset-0  bg-black bg-opacity-50 z-50 lg:hidden"
+          />
+        )}
         {/* Logo photo */}
         <div className="flex items-center justify-between p-4 border-b">
           <Link className=" flex items-center gap-2" href="/">
@@ -75,17 +77,23 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
         </div>
 
         {/* Search */}
-        <div className="p-4">
+        <div onClick={() => setIsSearchOpened(true)} className="p-4 ">
           <input
             type="text"
             onChange={(e) => setquery(e.target.value)}
             placeholder="Search..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+            className={`${
+              IsSearchOpened
+                ? "absolute top-1/2 left-1/2 transform  -translate-y-1/2 z-50 w-full p-4  border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                : "absolute w-10/12 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+            } transition-all duration-300 ease-in-out ${
+              IsSearchOpened ? "-translate-x-1/4" : "translate-x-0"
+            }`}
           />
         </div>
 
         {/* Tabs */}
-        <div className="grid grid-cols-2 border-b">
+        <div className="grid grid-cols-2 border-b mt-10">
           <button
             className={`py-2  text-center font-medium transition-all rounded-lg mx-2
             ${
@@ -114,37 +122,25 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
         <div className="overflow-y-auto h-[calc(100%-200px)]">
           {activeTab === "menu" ? (
             <AccordionMenu
-              items={[
-                {
-                  label: "Home",
-                  items: [],
-                  link: "/",
-                },
-                {
-                  label: "Admin",
-                  items: ["Shop List", "Add Product", "Orders"],
-                },
-
-                {
-                  label: "Pages",
-                  items: [
-                    "About Us",
-                    "Privacy Policy",
-                    "Login",
-                    "Register",
-                    "Forgot Password",
-                  ],
-                },
-              ]}
+              title="Menu"
+              items={DrawerHome.map((item) => ({
+                label: item.label,
+                items: item.items?.map((subItem) => ({
+                  label: subItem.label,
+                  link: subItem.link,
+                })),
+              }))}
             />
           ) : (
             <AccordionMenu
-              items={Object.entries(mockCategories).map(
-                ([category, sections]) => ({
-                  label: category,
-                  items: sections.flatMap((section) => section.items),
-                })
-              )}
+              title="Categories"
+              items={Object.entries(DrawerCategories).map(([category, items]) => ({
+                label: category,
+                items: items.map(({ name, link }) => ({
+                  label: name,
+                  link,
+                })),
+              }))}
             />
           )}
         </div>

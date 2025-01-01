@@ -1,45 +1,28 @@
 "use client";
 import Image from "next/image";
-import { notFound } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { AddToCart } from "../Redux/services/CartSlice";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { toast } from "react-toastify";
+import useFetchProducts from "../app/Hooks/useFetchProducts";
 
 export default function SharedCard() {
-  const [arrData, setstate] = useState([]);
+  const { data, loading } = useFetchProducts();
   const dispatch = useDispatch();
   const CartHandler = (product) => {
     dispatch(AddToCart(product));
     toast.success("Product added to cart");
   };
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("api/getProducts", {
-        cache: "no-cache",
-        next: { revalidate: 0 },
-      });
-
-      if (!res.ok) {
-        notFound();
-      }
-
-      const data = await res.json();
-      setstate(data);
-    };
-
-    getData();
-  }, []);
 
   const [currentPage, setcurrentPage] = useState(1);
 
   let itemsPerPage = 7;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = arrData.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(arrData.length / itemsPerPage);
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -52,7 +35,7 @@ export default function SharedCard() {
     }
   };
 
-  if (!arrData || arrData.length === 0) {
+  if (!data || data.length === 0 || loading) {
     return (
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto animate-pulse">

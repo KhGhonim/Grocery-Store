@@ -20,7 +20,7 @@ export default function AboutUs() {
     <div>
       <DesktopHeader />
       <MobileHeader />
-      <div className="min-h-screen bg-white max-md:pt-24">
+      <div className="min-h-screen bg-[--background-color] text-[--text-color] max-md:pt-24">
         {/* Hero Section */}
         <div
           className="h-[500px] bg-cover bg-center relative"

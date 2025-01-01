@@ -10,7 +10,7 @@ export default function PolicyTabs() {
   const [activeTab, setActiveTab] = useState("policy");
 
   return (
-    <div className="min-h-full bg-gradient-to-b from-green-50 to-blue-50 relative ">
+    <div className="min-h-full bg-gradient-to-b max-lg:mt-20 from-green-50 to-blue-50 relative ">
       <div className="relative max-w-5xl mx-auto px-4 py-12 !overflow-hidden z-10">
         <div
           className="fixed inset-0 bg-cover bg-center opacity-5 pointer-events-none"

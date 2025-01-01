@@ -16,6 +16,11 @@ module.exports = {
         hostname: "images.unsplash.com",
         port: "",
       },
+      {
+        protocol: "http",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
     ],
   },
 };

@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function FixedCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  place-items-center gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-[--background-color] p-2 place-items-center gap-6">
       {fixedCards.map((card, i) => {
         return (
           <Link

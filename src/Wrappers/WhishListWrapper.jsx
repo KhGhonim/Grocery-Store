@@ -6,7 +6,7 @@ import Footer from "_components/Footer";
 import DesktopHeader from "_components/HeaderDesktop/DesktopHeader";
 import MobileHeader from "_components/HeaderPhone/MobileHeader";
 import RecommendedSection from "_components/WishlistPage/RecommendedSection";
-import { WhisListRemover } from "../Redux/services/CartSlice";
+import { AddToCart, WhisListRemover } from "../Redux/services/CartSlice";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function WhishListWrapper() {
@@ -19,12 +19,17 @@ export default function WhishListWrapper() {
     toast.success("Product removed from wishlist");
   };
 
+  const handleAddToCart = (product) => {
+    dispatch(AddToCart(product));
+    toast.success("Product added to cart");
+  };
+
   return (
     <div>
       <ToastContainer />
       <DesktopHeader />
       <MobileHeader />
-      <div className="min-h-screen bg-gray-50 max-md:pt-28 py-12 px-4">
+      <div className="min-h-screen bg-[--background-color] text-[--text-color] max-md:pt-28 py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-bold">My Wishlist</h1>
@@ -36,7 +41,7 @@ export default function WhishListWrapper() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-[--background-color] text-[--text-color] rounded-lg shadow-lg p-6">
             {WishListProducts.length === 0 ? (
               <div className="text-center py-12">
                 <FaHeart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -52,7 +57,7 @@ export default function WhishListWrapper() {
                 {WishListProducts?.map((item) => (
                   <div
                     key={item.id}
-                    className="flex flex-col md:flex-row items-center gap-4 p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow bg-white"
+                    className="flex flex-col md:flex-row items-center gap-4 p-4 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow bg-[--background-color] text-[--text-color]"
                   >
                     <img
                       src={item.image}
@@ -60,7 +65,7 @@ export default function WhishListWrapper() {
                       className="w-24 h-24 object-cover rounded-lg shadow-sm"
                     />
                     <div className="flex-1 text-center md:text-left">
-                      <h3 className="text-lg font-semibold text-gray-800">
+                      <h3 className="text-lg font-semibold">
                         {item.name}
                       </h3>
                       <p className="text-green-500 font-semibold text-base mt-1">
@@ -76,6 +81,9 @@ export default function WhishListWrapper() {
                     </div>
                     <div className="flex items-center gap-4">
                       <button
+                        onClick={() => {
+                          handleAddToCart(item);
+                        }}
                         className={`px-4 py-2 rounded-lg flex items-center gap-2 font-medium shadow-sm transition ${
                           item.stock
                             ? "bg-green-600 text-white hover:bg-green-700"
@@ -102,7 +110,7 @@ export default function WhishListWrapper() {
           </div>
 
           {WishListProducts.length > 0 && (
-            <div className="mt-6 flex justify-between items-center bg-white rounded-lg shadow-lg p-3">
+            <div className="mt-6 flex justify-between items-center bg-[--background-color] text-[--text-color] rounded-lg shadow-lg p-3">
               <div>
                 <p className="text-gray-600">
                   Total Items: {WishListProducts.length}

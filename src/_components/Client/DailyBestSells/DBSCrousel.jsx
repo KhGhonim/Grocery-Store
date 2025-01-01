@@ -44,7 +44,7 @@ export default function DBSCrousel({ product }) {
   };
 
   return (
-    <div className="w-full h-full p-5 lg:p-10">
+    <div className="w-full h-full p-5 lg:p-10 bg-[--background-color] text-[--text-color]">
       <Swiper
         loop={true}
         pagination={{
@@ -73,7 +73,7 @@ export default function DBSCrousel({ product }) {
           prevEl: ".swiper-button-prev-sells-container",
         }}
         modules={[Autoplay, Navigation]}
-        className="mySwiper w-full h-full "
+        className="mySwiper w-full h-full bg-[--background-color] text-[--text-color] "
         onSlideChange={(swiper) => {
           setWhichSwipear(swiper.activeIndex);
         }}
@@ -82,14 +82,14 @@ export default function DBSCrousel({ product }) {
           return (
             <SwiperSlide
               key={i}
-              className="relative bg-white rounded-lg shadow-md overflow-hidden  transition-all duration-300 mb-5 "
+              className="relative bg-[--background-color]text-[--text-color] rounded-lg shadow-lg overflow-hidden  transition-all duration-300 mb-5 "
               onMouseEnter={() => handleHoveringItem(i)}
               onMouseLeave={() => handleHoveringItem(null)}
             >
               {/* Discount Badge */}
 
               {item.discount !== 0 && (
-                <div className="absolute top-0 left-0 bg-green-500 text-white px-4 py-1 rounded-br-xl text-sm z-10">
+                <div className="absolute top-0 left-0 bg-green-500 text-[--text-color] px-4 py-1 rounded-br-xl text-sm z-10">
                   {item.discount}%
                 </div>
               )}
@@ -114,28 +114,31 @@ export default function DBSCrousel({ product }) {
                     onClick={() => {
                       HandleProductDetailsModal(item);
                     }}
-                    className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors"
+                    className="p-2 bg-[--background-color] rounded-full hover:bg-green-500 hover:text-[--text-color] transition-colors"
                   >
                     <FaEye size={20} />
                   </button>
                   <button
                     onClick={() => HandleWhishList(item)}
-                    className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors"
+                    className="p-2 bg-[--background-color] rounded-full hover:bg-green-500 hover:text-[--text-color] transition-colors"
                   >
                     <FaHeart size={20} />
                   </button>
-                  <button onClick={() => AddToCompareHandler(item)} className="p-2 bg-white rounded-full hover:bg-green-500 hover:text-white transition-colors">
+                  <button
+                    onClick={() => AddToCompareHandler(item)}
+                    className="p-2 bg-[--background-color] rounded-full hover:bg-green-500 hover:text-[--text-color] transition-colors"
+                  >
                     <FiBarChart size={20} />
                   </button>
                 </div>
               </div>
 
               {/* Product Info */}
-              <div className="p-4">
+              <div className="p-4 bg-[--background-color] text-[--text-color]">
                 <div className="text-sm text-gray-500 mb-1">
                   {item.category}
                 </div>
-                <h3 className="font-semibold text-sm text-gray-800 mb-2 hover:text-green-500 cursor-pointer">
+                <h3 className="font-semibold text-sm text-[--text-color] mb-2 hover:text-green-500 cursor-pointer">
                   {item.name}
                 </h3>
 

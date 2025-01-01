@@ -4,7 +4,7 @@ import { CiShoppingCart } from 'react-icons/ci'
 
 export default function RecommendedSection() {
   return (
-    <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
+    <div className="mt-12 bg-[--background-color] text-[--text-color] rounded-lg shadow-lg p-6">
     <h2 className="text-2xl font-bold mb-6">Recommended for You</h2>
     <div className="grid md:grid-cols-3 gap-6">
       {recommendations.map((item) => (

@@ -66,8 +66,8 @@ export default function navbar() {
 
   return (
     <>
-      <header className="hidden lg:block bg-white">
-        <div className=" flex h-16 max-w-screen items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-sm my-3">
+      <header className="hidden lg:block bg-[--background-color]">
+        <div className=" flex h-16 max-w-screen items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-sm py-3">
           {/* Logo photo */}
           <Link className=" flex items-center gap-2 p-1" href="/">
             <Image
@@ -99,7 +99,7 @@ export default function navbar() {
                 <div
                   ref={MyCatagoryRef}
                   onClick={handleArrow}
-                  className="inline-flex items-center overflow-hidden rounded-full border bg-white"
+                  className="inline-flex items-center overflow-hidden rounded-full border bg-[--background-color] shadow-sm"
                 >
                   <div className="flex justify-between items-center gap-4 border-e px-4 py-2  hover:bg-gray-50 hover:text-gray-700">
                     <Image
@@ -108,10 +108,10 @@ export default function navbar() {
                       width={25}
                       height={25}
                     />
-                    <span className="text-sm/none text-gray-600">Catagory</span>
+                    <span className="text-sm/none text-[--text-color]">Catagory</span>
                   </div>
 
-                  <button className="h-full p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700 ">
+                  <button className="h-full p-2 text-[--text-color] hover:bg-gray-50 hover:text-gray-700 ">
                     {isArrowClicked ? (
                       <MdKeyboardArrowDown />
                     ) : (
@@ -124,10 +124,10 @@ export default function navbar() {
 
                 {IsCatagoryClicked ? (
                   <div
-                    className="absolute start-0 z-10 top-12  rounded-md border border-gray-100 bg-white shadow-lg"
+                    className="absolute start-0 z-10 top-12  rounded-md border border-gray-100 bg-[--background-color] shadow-lg"
                     role="menu"
                   >
-                    <div className="p-2 rounded-xl md:block cursor-pointer">
+                    <div className="p-2 rounded-xl md:block cursor-pointer bg-[--background-color]">
                       {CatagoryData.map((item) => {
                         return (
                           <div
@@ -153,11 +153,11 @@ export default function navbar() {
 
                 <form
                   onSubmit={handleSearch}
-                  className=" w-96 border border-solid py-2 rounded-3xl flex items-center bg-white shadow-sm"
+                  className=" w-96 border border-solid py-2 rounded-3xl flex items-center bg-[--background-color] shadow-sm"
                 >
                   <button
                     type="submit"
-                    className="px-3 border-r-2 border-gray-300 text-gray-500"
+                    className="px-3 border-r-2 border-gray-300 text-[--text-color]"
                   >
                     <CiSearch />
                   </button>
@@ -165,11 +165,12 @@ export default function navbar() {
                     type="search"
                     name="Search"
                     id="Search"
-                    placeholder="Search your product"
-                    className="w-full px-3 text-gray-700 bg-transparent border-none focus:outline-none focus:ring-0"
+                    placeholder="Search your product and press Enter"
+                    className="w-full px-3 text-[--text-color] bg-transparent border-none focus:outline-none focus:ring-0"
                     onChange={(eo) => {
                       setquery(eo.target.value);
                     }}
+                    
                   />
                 </form>
               </div>
@@ -182,13 +183,13 @@ export default function navbar() {
                   className="flex items-center transition-all duration-200 ease-in-out gap-2 hover:text-green-600"
                   href="/Wishlist"
                 >
-                  <div className="relative">
+                  <div className="relative text-[--text-color]">
                     <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {WishListProducts.length}
                     </span>
                     <IoMdHeartEmpty size={30} />
                   </div>{" "}
-                  <div className="text-sm">
+                  <div className="text-sm text-[--text-color]">
                     <div>Wishlist</div>
                   </div>
                 </Link>
@@ -199,13 +200,13 @@ export default function navbar() {
                   className="flex items-center transition-all duration-200 ease-in-out gap-2 hover:text-green-600"
                   href="/Cart"
                 >
-                  <div className="relative">
-                    <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <div className="relative text-[--text-color]">
+                    <span className="absolute -top-2 -right-2 bg-green-500  text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {SelectedProducts.length}
                     </span>
                     <CiShoppingCart size={30} />
                   </div>{" "}
-                  <div className="text-sm">
+                  <div className="text-sm text-[--text-color]">
                     <div>Cart</div>
                   </div>
                 </Link>
@@ -216,13 +217,13 @@ export default function navbar() {
                   className="flex items-center transition-all duration-200 ease-in-out gap-2 hover:text-green-600"
                   href="/Compare"
                 >
-                  <div className="relative">
+                  <div className="relative text-[--text-color]">
                     <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                       {CompareProducts.length}
                     </span>
                     <IoIosGitCompare size={30} />
                   </div>{" "}
-                  <div className="text-sm">
+                  <div className="text-sm text-[--text-color]">
                     <div>Compare</div>
                   </div>
                 </Link>
@@ -246,7 +247,7 @@ export default function navbar() {
                       className="flex items-center gap-2 hover:text-green-600"
                     >
                       <CiUser size={30} />
-                      <div className="text-sm">
+                      <div className="text-sm text-[--text-color]">
                         <div>Account</div>
                       </div>
                     </Link>
@@ -259,10 +260,10 @@ export default function navbar() {
                     session.user.email === "admin@admin.com" && (
                       <Link
                         href="/AddProduct"
-                        className="flex items-center gap-2 hover:text-green-600"
+                        className="flex items-center gap-2 text-[--text-color] hover:text-green-600"
                       >
                         <FaPlus size={24} />
-                        <div className="text-sm">
+                        <div className="text-sm text-[--text-color] hover:text-green-600">
                           <div>Add Product</div>
                           <div className="text-xs text-gray-500">
                             For Admins
@@ -273,7 +274,7 @@ export default function navbar() {
 
                   {/* Logout button for authenticated users */}
                   <button
-                    className="flex flex-col items-center gap-2 hover:text-green-600"
+                    className="flex flex-col items-center gap-2 text-[--text-color] hover:text-green-600"
                     onClick={() => signOut()}
                   >
                     <FaSignOutAlt size={24} />
@@ -287,7 +288,7 @@ export default function navbar() {
               <button
                 ref={toggleButtonRef}
                 onClick={HandleMenu}
-                className="block rounded-full bg-gray-100 transition-all duration-150  p-2.5 text-gray-600  hover:text-gray-600/75 md:hidden"
+                className="block rounded-full bg-gray-100 transition-all duration-150  p-2.5 text-[--text-color]  hover:text-[--text-color]/75 md:hidden"
               >
                 <CiMenuBurger />
               </button>

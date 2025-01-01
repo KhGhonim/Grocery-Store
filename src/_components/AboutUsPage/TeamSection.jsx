@@ -2,7 +2,7 @@ import { team } from "../../DB/db";
 
 export default function TeamSection() {
   return (
-    <div className="py-20 bg-white">
+    <div className="py-20 bg-[--background-color] text-[--text-color]">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-16">
           Meet Our Leadership Team

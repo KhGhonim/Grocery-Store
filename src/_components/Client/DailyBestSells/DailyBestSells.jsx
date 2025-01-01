@@ -1,52 +1,31 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import DBSCrousel from "./DBSCrousel";
-import { notFound } from "next/navigation";
 import Loading from "../../../app/loading";
+import useFetchProducts from "../../../app/Hooks/useFetchProducts";
 
 export default function DailyBestSells() {
   const [activeCategory, setactiveCategory] = useState("all");
-  const [arrData, setstate] = useState([]);
-  const [isloading, setisloading] = useState(false);
-
-  useEffect(() => {
-    const getData = async () => {
-      setisloading(true);
-      const res = await fetch("api/getProducts", {
-        cache: "no-cache",
-        next: { revalidate: 0 },
-      });
-
-      if (!res.ok) {
-        notFound();
-      }
-
-      const data = await res.json();
-      setstate(data);
-    };
-
-    getData();
-    setisloading(false);
-  }, []);
+  const { data, loading } = useFetchProducts();
 
   const filteredProducts =
     activeCategory === "all"
-      ? arrData
-      : arrData.filter((product) => product.category === activeCategory);
+      ? data
+      : data.filter((product) => product.category === activeCategory);
 
   return (
-    <div className="w-screen h-full mt-10">
-      <div className=" my-10 flex flex-col lg:flex-row text-center px-2 lg:px-5">
-        <h2 className="hidden max-lg:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-14">
+    <div className="w-screen h-full bg-[--background-color] text-[--text-color] pt-10">
+      <div className=" py-10 flex flex-col lg:flex-row text-center px-2 lg:px-5">
+        <h2 className="hidden max-lg:text-2xl md:text-3xl lg:text-4xl font-bold pb-14">
           Daily Best Sells
         </h2>
 
         <div className="hidden lg:block  w-1/5 h-full relative ">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-14">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bol pb-14">
             Daily Best Sells
           </h2>
           <Image
@@ -163,11 +142,7 @@ export default function DailyBestSells() {
             </ul>
           </div>
 
-          {isloading ? (
-            <Loading />
-          ) : (
-            <DBSCrousel product={filteredProducts} />
-          )}
+          {loading ? <Loading /> : <DBSCrousel product={filteredProducts} />}
         </div>
       </div>
     </div>
