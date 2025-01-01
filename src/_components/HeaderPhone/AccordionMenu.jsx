@@ -18,10 +18,10 @@ export default function AccordionMenu({ items, title }) {
       {items.map((item, i) => (
         <div key={`item-${i}+${item.label}`} className="border-gray-100">
           <button
-            className="flex items-center justify-between w-full p-4 text-left hover:bg-gray-50"
+            className="flex items-center justify-between w-full group p-4 text-left focus:outline-none"
             onClick={() => toggleItem(item.label)}
           >
-            <span className="font-medium text-gray-700 capitalize">
+            <span className="font-medium text-gray-700 capitalize group-hover:text-green-500">
               {item.label}
             </span>
             {item?.items?.length ? (
@@ -35,7 +35,7 @@ export default function AccordionMenu({ items, title }) {
           </button>
 
           {item?.items?.length > 0 && activeItems.includes(item.label) && (
-            <div className="bg-gray-50 px-4 py-2">
+            <div className="bg-[--background-color] px-4 py-2">
               <div className="space-y-2">
                 {item?.items?.map((subItem, index) => {
                   return (

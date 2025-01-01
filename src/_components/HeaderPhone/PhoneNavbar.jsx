@@ -11,7 +11,7 @@ export default function PhoneNavbar({
 }) {
   return (
     <div
-      className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 py-2 bg-white shadow-lg transition-all duration-500 ease-in-out ${
+      className={`lg:hidden fixed bottom-0 left-0 right-0 z-50 py-2 bg-[--background-color-2] text-[--text-color] shadow-lg transition-all duration-500 ease-in-out ${
         isHidden ? "opacity-0 translate-y-full" : "opacity-100 translate-y-0"
       }`}
     >

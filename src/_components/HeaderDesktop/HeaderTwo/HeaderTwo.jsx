@@ -101,7 +101,7 @@ export default function navbar() {
                   onClick={handleArrow}
                   className="inline-flex items-center overflow-hidden rounded-full border bg-[--background-color] shadow-sm"
                 >
-                  <div className="flex justify-between items-center gap-4 border-e px-4 py-2  hover:bg-gray-50 hover:text-gray-700">
+                  <div className="flex justify-between items-center gap-4 border-e px-4 py-2  ">
                     <Image
                       src={"/images/menu.png"}
                       alt={"Catagory Menu"}
@@ -111,7 +111,7 @@ export default function navbar() {
                     <span className="text-sm/none text-[--text-color]">Catagory</span>
                   </div>
 
-                  <button className="h-full p-2 text-[--text-color] hover:bg-gray-50 hover:text-gray-700 ">
+                  <button className="h-full p-2 text-[--text-color]  ">
                     {isArrowClicked ? (
                       <MdKeyboardArrowDown />
                     ) : (

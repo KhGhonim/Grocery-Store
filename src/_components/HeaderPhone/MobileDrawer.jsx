@@ -5,6 +5,7 @@ import AccordionMenu from "./AccordionMenu";
 import { DrawerCategories, DrawerHome } from "../../DB/db";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 export default function MobileDrawer({ isOpen, onClose, isHidden }) {
   const [activeTab, setActiveTab] = useState("menu");
@@ -26,7 +27,8 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
   }, []);
 
   const [query, setquery] = useState(null);
-  
+  const { status } = useSession();
+
   return (
     <>
       {/* Overlay */}
@@ -41,7 +43,7 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
       <div
         ref={ref}
         className={`
-      fixed top-0 left-0 h-full w-[300px] bg-white z-40 p-2  transform transition-transform duration-300 lg:hidden
+      fixed top-0 left-0 h-full w-[300px] bg-[--background-color] text-[--text-color] z-40 p-2  transform transition-transform duration-300 lg:hidden
       ${isOpen ? "translate-x-0" : "-translate-x-full"}
       
     `}
@@ -93,7 +95,7 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
         </div>
 
         {/* Tabs */}
-        <div className="grid grid-cols-2 border-b mt-10">
+        <div className="grid grid-cols-2 mt-10">
           <button
             className={`py-2  text-center font-medium transition-all rounded-lg mx-2
             ${
@@ -134,38 +136,55 @@ export default function MobileDrawer({ isOpen, onClose, isHidden }) {
           ) : (
             <AccordionMenu
               title="Categories"
-              items={Object.entries(DrawerCategories).map(([category, items]) => ({
-                label: category,
-                items: items.map(({ name, link }) => ({
-                  label: name,
-                  link,
-                })),
-              }))}
+              items={Object.entries(DrawerCategories).map(
+                ([category, items]) => ({
+                  label: category,
+                  items: items.map(({ name, link }) => ({
+                    label: name,
+                    link,
+                  })),
+                })
+              )}
             />
           )}
         </div>
 
         {/* Footer */}
-        <div
-          className={`absolute ${
-            isHidden ? "bottom-2" : "bottom-14"
-          } left-0 right-0 border-t bg-white p-4 space-y-3 transition-all duration-150 ease-in-out`}
-        >
-          <div className="grid grid-cols-2 gap-2 mt-1">
-            <Link
-              href="/signup"
-              className="bg-orange-500 text-center font-semibold text-white py-2 rounded-lg hover:bg-orange-600 transition-colors"
-            >
-              Sign Up
-            </Link>
-            <Link
-              href="/signin"
-              className="bg-green-500 text-center font-semibold text-white py-2 rounded-lg hover:bg-green-600 transition-colors"
-            >
-              Log In
-            </Link>
+        {status === "unauthenticated" ? (
+          <div
+            className={`absolute ${
+              isHidden ? "bottom-2" : "bottom-14"
+            } left-0 right-0 border-t bg-[--background-color] p-4 space-y-3 transition-all duration-150 ease-in-out`}
+          >
+            <div className="grid grid-cols-2 gap-2 mt-1">
+              <Link
+                href="/signup"
+                className="bg-orange-500 text-center font-semibold text-white py-2 rounded-lg hover:bg-orange-600 transition-colors"
+              >
+                Sign Up
+              </Link>
+              <Link
+                href="/signin"
+                className="bg-green-500 text-center font-semibold text-white py-2 rounded-lg hover:bg-green-600 transition-colors"
+              >
+                Log In
+              </Link>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            className={`absolute ${
+              isHidden ? "bottom-2" : "bottom-14"
+            } left-0 right-0 border-t bg-[--background-color] p-4 flex justify-center space-y-3 transition-all duration-150 ease-in-out`}
+          >
+            <button
+              onClick={() => signOut()}
+              className="bg-green-500 text-center font-semibold text-white py-2 px-6 rounded-lg hover:bg-green-600 transition-colors"
+            >
+              Log Out
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

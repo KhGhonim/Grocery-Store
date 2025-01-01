@@ -38,7 +38,7 @@ export default function MobileHeader() {
       <div
         className={`lg:hidden absolute p-2 ${
           pathname === "/" ? "top-14" : "top-0"
-        } left-0 right-0 bg-white z-30 shadow-md`}
+        } left-0 right-0 bg-[--background-color-2] z-30 shadow-md`}
       >
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo photo */}
@@ -67,14 +67,14 @@ export default function MobileHeader() {
 
           <div className="flex items-center gap-4">
             <Link href="/Cart" className="relative">
-              <FaShoppingBasket size={24} className="text-gray-700" />
+              <FaShoppingBasket size={24} className="text-[--text-color]" />
               <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {SelectedProducts.length}
               </span>
             </Link>
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="text-gray-700"
+              className="text-[--text-color]"
             >
               <IoIosMenu size={24} />
             </button>
@@ -87,7 +87,11 @@ export default function MobileHeader() {
         onClose={() => setIsDrawerOpen(false)}
         isHidden={isHidden}
       />
-      <PhoneNavbar WishListProducts={WishListProducts} CompareProducts={CompareProducts} isHidden={isHidden} />
+      <PhoneNavbar
+        WishListProducts={WishListProducts}
+        CompareProducts={CompareProducts}
+        isHidden={isHidden}
+      />
     </>
   );
 }
