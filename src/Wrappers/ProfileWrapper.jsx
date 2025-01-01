@@ -3,12 +3,12 @@ import NotificationsTab from "_components/ProfilePage/NotificationsTab";
 import OrdersTab from "_components/ProfilePage/OrdersTab";
 import SettingsTab from "_components/ProfilePage/SettingsTab";
 import { tabs } from "../DB/db";
-import React, { useState } from "react";
+import { useState } from "react";
 import { LuLogOut } from "react-icons/lu";
 import HeaderOne from "_components/HeaderDesktop/HeaderOne/HeaderOne";
 import HeaderTwo from "_components/HeaderDesktop/HeaderTwo/HeaderTwo";
 import MobileHeader from "_components/HeaderPhone/MobileHeader";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function ProfileWrapper() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -40,7 +40,10 @@ export default function ProfileWrapper() {
                 </li>
               ))}
             </ul>
-            <button className="w-full flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mt-8">
+            <button
+              onClick={() => signOut()}
+              className="w-full flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mt-8"
+            >
               <LuLogOut className="w-5 h-5" />
               <span>Logout</span>
             </button>
@@ -80,7 +83,7 @@ export default function ProfileWrapper() {
                     </label>
                     <input
                       type="text"
-                      value={session.user.name}
+                      value={session?.user?.name}
                       className="w-full px-4 py-2 border capitalize rounded-lg focus:ring-2 outline-none text-black focus:ring-green-500"
                     />
                   </div>
@@ -90,7 +93,7 @@ export default function ProfileWrapper() {
                     </label>
                     <input
                       type="email"
-                      value={session.user.email}
+                      value={session?.user?.email}
                       className="w-full px-4 py-2 border rounded-lg focus:ring-2 outline-none text-black focus:ring-green-500"
                     />
                   </div>
