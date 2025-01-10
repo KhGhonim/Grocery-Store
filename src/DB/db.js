@@ -262,6 +262,7 @@ export const DrawerCategories = {
 export const DrawerHome =   [
   {
     label: "Admin",
+    required: "admin@admin.com",
     items: [
       { label: "Products Store", link: "AddProduct#products" },
       { label: "Add Product", link: "AddProduct#AddProduct" },
